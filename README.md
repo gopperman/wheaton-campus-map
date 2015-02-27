@@ -56,6 +56,11 @@ See [Documentation](#documentation) for more details on the steps below.
 4. Set your Nginx or Apache vhost to `/path/to/site/web/` (`/path/to/site/current/web/` if using Capistrano)
 5. Access WP Admin at `http://example.com/wp/wp-admin`
 
+### Wordpress Setup
+1. Complete the normal Wordpress installation process.
+2. Activate the 'Wheaton Map' Theme
+3. Install and Activate Advanced Custom fields with your developer key
+
 ## Documentation
 
 ### Folder Structure

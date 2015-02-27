@@ -4,10 +4,16 @@ The Wheaton Map is a single-page application delivered via Wordpress for interac
 
 # ToC
 
-* [Getting Started](#getting-started))
-	*  Requirements
-	* Frameworks and Tools
-* [Installation/Usage](#installation-usage)
+* [Getting Started](#getting-started)
+	*  [Requirements](#requirements)
+	* [Frameworks and Tools](#frameworks-and-tools)
+* [Installation/Usage](#installationusage)
+* [Documentation](#documentation)
+	* [Configuration Files](#configuration-files)
+	* [Environment Variables](#environment-variables)
+		* [Plugins](#plugins) 
+		* [Updating WP and Plugins](#updating-wp-and-plugin-versions) 
+		* [Themes](#themes)
 
 ## Getting Started
 
@@ -25,7 +31,7 @@ The Wheaton Map is built on [Roots](https://roots.io/), using the Bedrock Wordpr
 	* [Bedrock Documentation](https://roots.io/bedrock/docs/)
 	* [Sage Documentation](https://roots.io/sage/docs/)
 	* [Advanced Custom Fields](http://www.advancedcustomfields.com/resources)
-* [Javascript]
+* Javascript
 	* [Grunt](http://gruntjs.com/getting-started)
 	* [jQuery](http://api.jquery.com/)
 * CSS 
@@ -164,17 +170,6 @@ Composer support is built-in so when you run a deploy, `composer install` is aut
 
 It's written in Ruby so it's needed *locally* if you want to use it. Capistrano was recently rewritten to be completely language agnostic, so if you previously wrote it off for being too Rails-centric, take another look at it.
 
-Screencast ($): [Deploying WordPress with Capistrano](http://roots.io/screencasts/deploying-wordpress-with-capistrano/)
-
-#### DB Syncing
-
-Bedrock doesn't come with anything by default to do DB syncing yet. The best option is to use WP-CLI.
-
-[@lavmeiker](https://github.com/lavmeiker) has a nice Capistrano WP-CLI wrapper plugin to make this even easier. [capistrano-wpcli](https://github.com/lavmeiker/capistrano-wpcli) offers the following commands (and more):
-
-* Sync DB: `cap production wpcli:db:push` and `cap production wpcli:db:pull`
-* Sync uploads: `cap production wpcli:uploads:rsync:push` and `cap production wpcli:uploads:rsync:pull`
-
 #### Don't want it?
 
 You will lose the one-command deploys and built-in integration with Composer. Another deploy method will be needed as well.
@@ -194,12 +189,6 @@ Bedrock disables the internal WP Cron via `define('DISABLE_WP_CRON', true);`. If
 Bedrock works with [WP-CLI](http://wp-cli.org/) just like any other WordPress project would. Previously we required WP-CLI in our `composer.json` file as a dependency. This has been removed since WP-CLI now recommends installing it globally with a `phar` file. It also caused conflicts if you tried using a global install.
 
 The `wp` command will automatically pick up Bedrock's subdirectory install as long as you run commands from within the project's directory (or deeper). Bedrock includes a `wp-cli.yml` file that sets the `path` option to `web/wp`. Use this config file for any further [configuration](http://wp-cli.org/config/).
-
-## Vagrant/Ansible
-
-Vagrant and Ansible integration with Bedrock can now be found in the separate [bedrock-ansible](https://github.com/roots/bedrock-ansible) project. Basic instructions exist in that project's README, but if you want a Vagrant box tied to a specific Bedrock based WP application, copy the example `Vagrantfile` into your app's repo and edit the necessary file paths.
-
-Note that using Ansible you no longer need to manually create/edit a `.env` file (or use `composer create-project` to generate one). Ansible will generate a `.env` based on its config and automatically generate salts/keys.
 
 ## mu-plugins autoloader
 

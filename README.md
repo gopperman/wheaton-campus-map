@@ -59,7 +59,7 @@ See [Documentation](#documentation) for more details on the steps below.
 ### Wordpress Setup
 1. Complete the normal Wordpress installation process.
 2. Activate the 'Wheaton Map' Theme
-3. Install and Activate Advanced Custom fields with your developer key
+3. Install and activate Advanced Custom fields with your developer key
 
 ## Documentation
 

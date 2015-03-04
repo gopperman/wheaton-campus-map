@@ -2,7 +2,7 @@
 
 The Wheaton Map is a single-page application delivered via Wordpress for interactive campus tours.
 
-# ToC
+# Table of Contents
 
 * [Getting Started](#getting-started)
 	*  [Requirements](#requirements)

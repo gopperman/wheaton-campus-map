@@ -47,6 +47,7 @@ Map locations are implemented as a custom post type, with a mix of custom fields
 	* Contact Information (Optional) - A repeater field for one or more sets of phone numbers, e-mail addresses, etc. Each repeater contains a "Type" (Phone or Email), a label ("Name"), and a value for the actual phone number or e-mail address.
 	* Photo Gallery (Optional) - A gallery of photos of the building and related activities. Photos are pulled in through the normal Wordpress Media Library and upload system. Landscape highly recommended, at least 1600x1200 each. 
 	* Coordinates - The actual map coordinates for the location
+
 ### [Roots Docs](http://roots.io/docs/)
 
 * [Roots 101](http://roots.io/roots-101/) — A guide to installing Roots, the files and theme organization

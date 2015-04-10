@@ -35,7 +35,10 @@ Map locations are implemented as a custom post type, with a mix of custom fields
 
 ### JSON
 
-You can ask a location page to return JSON by appending ?json, json=true, json=✓, json=defenestratedhippo, or anything to the page's parameters.
+You can ask a location page to return JSON by appending ?json, json=true, json=✓, json=defenestratedhippo, or anything to the page's parameters. For example:
+```
+http://map.wheaton/location/10-library-square/?json=✓
+```
 
 ### Location Content
 * Wordpress fields

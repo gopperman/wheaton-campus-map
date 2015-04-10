@@ -6,6 +6,7 @@ The Wheaton Map theme is built using Roots. Roots is a WordPress starter theme b
 
 ## Theme Requirements
 * [Advanced Custom Fields](http://www.advancedcustomfields.com/)
+
 ## Installation
 
 Clone the git repo and then rename the directory to the name of your theme or website. [Install Grunt](http://gruntjs.com/getting-started), and then install the dependencies for Roots contained in `package.json` by running the following from the Roots theme directory:

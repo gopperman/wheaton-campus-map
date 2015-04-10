@@ -1,4 +1,4 @@
-if( function_exists('register_field_group') ):
+<?php if( function_exists('register_field_group') ):
 
 register_field_group(array (
 	'key' => 'group_54f74df0c8884',
@@ -510,3 +510,4 @@ register_field_group(array (
 ));
 
 endif;
+?>

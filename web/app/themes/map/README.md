@@ -33,6 +33,10 @@ Edit `lib/init.php` to setup custom navigation menus and post thumbnail sizes.
 
 Map locations are implemented as a custom post type, with a mix of custom fields and normal Wordpress fields to define content. The Locations post type is registered automatically by the theme. You may have to import the custom fields for locations to work properly. The code to generate the custom fields is located in lib/fields.php and included in lib/custom.php. Custom fields should automatically register themselves.
 
+### JSON
+
+You can ask a location page to return JSON by appending ?json, json=true, json=✓, json=defenestratedhippo, or anything to the page's parameters.
+
 ### Location Content
 * Wordpress fields
 	* Title - Building Name

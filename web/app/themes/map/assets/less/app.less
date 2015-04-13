@@ -5,6 +5,86 @@
 @import "bootstrap/bootstrap.less";
 
 /* ==========================================================================
+   Colors
+   ========================================================================== */
+@white:				#fff;
+@black:				#1d1b1c;
+@wheaton:			#005596;
+@slate:				#7493c1;
+@gray-dark:		#42454a;
+@gray-light:	#a6a6a6;
+@green:				#b9c525;
+@purple:			#5b3762;
+@mudkip:			#60a9e7;
+@orange:			#e05838;
+@yellow:			#efcb43;
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+body {-webkit-font-smoothing: antialiased;}
+.oswald {font-family: 'Oswald', sans-serif;}
+.opensans {font-family: 'Open Sans', sans-serif;}
+.georgia {font-family: Georgia, serif;}
+
+.paragraph, p {
+	.georgia;
+	font-size: 18px;
+	font-weight: 300;
+	color: @gray-dark;
+	line-height: 1.7em;
+}
+
+.detail {
+	.opensans;
+	font-size: 13px;
+}
+
+h1, h2, h3, h4 {
+	.oswald;
+	text-transform: uppercase;
+	font-weight: bold;
+	color: @black;
+	a, a:hover {
+		text-decoration: none;
+		color: @black;
+	}
+}
+
+h1 {font-size: 60px;}
+h2 {font-size: 24px;}
+h3 {font-size: 18px;}
+h4 {font-size: 13px;}
+
+.link-style {
+	color: @wheaton;
+	text-decoration: none;
+	transition: all, .2s;
+	&:hover {
+		cursor: hand;
+		cursor: pointer;
+		text-decoration: underline;
+	}
+}
+
+/* ==========================================================================
+   Mixins
+   ========================================================================== */
+.button {
+	color: @white;
+	border-radius: 2px;
+	background: @green;
+	transition: all, .2s;
+	.oswald;
+	font-size: 13px;
+	font-weight: bold;
+
+	&:hover {
+		background: darken(@green, 15%);
+	}	
+}
+
+/* ==========================================================================
    Base
    ========================================================================== */
 
@@ -15,9 +95,25 @@ body { }
 /* ==========================================================================
    Header
    ========================================================================== */
-
-.banner { }
-
+.navbar-default {
+	background: @wheaton;
+	border: none;
+	color: @white;
+	.navbar-brand {
+		color: @white;
+		&:hover, &:focus {
+			color: @white;
+		}
+	}
+	.navbar-nav>.active>a, .navbar-nav>.active>a:hover, .navbar-nav>.active>a:focus, .navbar-nav>li>a {
+		color: @white;
+		background: transparent;
+	}
+	.navbar-nav>li>a:hover, .navbar-nav>li>a:focus {
+		color: @white;
+		background: transparent;
+	}
+}
 
 
 /* ==========================================================================

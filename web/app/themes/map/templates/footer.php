@@ -1,6 +1,6 @@
 <footer class="content-info" role="contentinfo">
-  <div class="container">
-    <?php dynamic_sidebar('sidebar-footer'); ?>
+  <div class="container-fluid">
+		&copy; <?= date("Y") ?> <a href="//wheatoncollege.edu">Wheaton College</a>
   </div>
 </footer>
 

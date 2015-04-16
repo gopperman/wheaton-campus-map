@@ -23,18 +23,19 @@ var Roots = {
   common: {
     init: function() {
       // JavaScript to be fired on all pages
-
+			console.log('ok');
 			//Asynchronously load external CSS - Font Awesome
 			var fa = document.createElement('link');
-			fa.href = '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css';
+			fa.href = 'http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css';
 			fa.rel = 'stylesheet';
 			fa.type = 'text/css';
 			document.getElementsByTagName('head')[0].appendChild(fa);
 
 			//Google Fonts
 			var gf = document.createElement('link');
-			gf.href = '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css';
 			gf.href = '//fonts.googleapis.com/css?family=Open+Sans:400,700|Oswald:400,700';
+			gf.rel = 'stylesheet';
+			gf.type = 'text/css';
 			document.getElementsByTagName('head')[0].appendChild(gf);
    }
   },

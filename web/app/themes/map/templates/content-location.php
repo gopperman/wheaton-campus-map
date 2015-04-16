@@ -12,7 +12,7 @@
 			</div>
     </header>
 		<div class="container-fluid">
-	    <main class="entry-content col-sm-9">
+	    <main id="main" class="entry-content col-sm-9">
 	      <h2 class="entry-title"><?php the_title(); ?></h2>
 				<div id="description"><?= get_field('description'); ?></div>
 				<?php if( have_rows('directory') ): ?>

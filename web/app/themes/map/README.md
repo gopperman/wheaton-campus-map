@@ -45,7 +45,7 @@ http://map.wheaton/location/10-library-square/?json=✓
 	* Title - Building Name
 	* Categories - Used to support map filtering in categories such as Athletic, Dining, etc.
 	* Tags - Reserved for future use
-	* Featured Image - Used for the hero image on the building description page. Must be landscape orientation, 1600x1200 recommended.
+	* Featured Image - Used for the hero image on the building description page. Must be landscape orientation, 1600x900 recommended.
 * Custom Fields
 	* Description - About a paragraph of lightly-formatted text about the building
 	* Hours (optional) - A repeater field with a maximum of one entry. Hours for each day of the week.
@@ -53,7 +53,7 @@ http://map.wheaton/location/10-library-square/?json=✓
 	* Features - A text list of amenities and services offered in the building. 
 	* Directory (Optional) - A repeater field for a list of relevant department or organizational links (Admissions, Swim Team). Each directory entry has a label ("Name") and a URL ("Link")
 	* Contact Information (Optional) - A repeater field for one or more sets of phone numbers, e-mail addresses, etc. Each repeater contains a "Type" (Phone or Email), a label ("Name"), and a value for the actual phone number or e-mail address.
-	* Photo Gallery (Optional) - A gallery of photos of the building and related activities. Photos are pulled in through the normal Wordpress Media Library and upload system. Landscape highly recommended, at least 1600x1200 each. 
+	* Photo Gallery (Optional) - A gallery of photos of the building and related activities. Photos are pulled in through the normal Wordpress Media Library and upload system. Landscape highly recommended, at least 1600x1200 (4:3) each. 
 	* Coordinates - The actual map coordinates for the location
 
 ### [Roots Docs](http://roots.io/docs/)

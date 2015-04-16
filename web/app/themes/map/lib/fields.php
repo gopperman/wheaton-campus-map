@@ -1,4 +1,5 @@
-<?php if( function_exists('register_field_group') ):
+<?php 
+if( function_exists('register_field_group') ):
 
 register_field_group(array (
 	'key' => 'group_54f74df0c8884',
@@ -343,35 +344,6 @@ register_field_group(array (
 			'button_label' => 'Add Row',
 			'sub_fields' => array (
 				array (
-					'key' => 'field_5528160e03a59',
-					'label' => 'Type',
-					'name' => 'type',
-					'prefix' => '',
-					'type' => 'select',
-					'instructions' => '',
-					'required' => 0,
-					'conditional_logic' => 0,
-					'wrapper' => array (
-						'width' => '',
-						'class' => '',
-						'id' => '',
-					),
-					'choices' => array (
-						'E-mail' => 'E-mail',
-						'Phone' => 'Phone',
-					),
-					'default_value' => array (
-						'' => '',
-					),
-					'allow_null' => 0,
-					'multiple' => 0,
-					'ui' => 0,
-					'ajax' => 0,
-					'placeholder' => '',
-					'disabled' => 0,
-					'readonly' => 0,
-				),
-				array (
 					'key' => 'field_5528164203a5a',
 					'label' => 'Name',
 					'name' => 'name',
@@ -395,8 +367,27 @@ register_field_group(array (
 				),
 				array (
 					'key' => 'field_5528165c03a5b',
-					'label' => 'Value',
-					'name' => 'value',
+					'label' => 'Email',
+					'name' => 'email',
+					'prefix' => '',
+					'type' => 'email',
+					'instructions' => '',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array (
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'default_value' => '',
+					'placeholder' => '',
+					'prepend' => '',
+					'append' => '',
+				),
+				array (
+					'key' => 'field_552fcd383853e',
+					'label' => 'Phone',
+					'name' => 'phone',
 					'prefix' => '',
 					'type' => 'text',
 					'instructions' => '',
@@ -510,4 +501,5 @@ register_field_group(array (
 ));
 
 endif;
+
 ?>

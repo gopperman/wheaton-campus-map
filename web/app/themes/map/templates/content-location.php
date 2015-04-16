@@ -14,11 +14,18 @@
 		<div class="container-fluid">
 	    <main class="entry-content col-sm-9">
 	      <h2 class="entry-title"><?php the_title(); ?></h2>
-				<p><?= get_field('description'); ?>
-				<!--Directory-->
+				<div id="description"><?= get_field('description'); ?></div>
+				<?php if( have_rows('directory') ): ?>
+        	<h3>Building Directory</h3>
+          <ul id="directory">
+            <?php while ( have_rows('directory') ) : the_row(); ?>
+              <li><a href="<?= get_sub_field('link'); ?>" target="_blank"><?=get_sub_field('name'); ?></a>
+            <?php endwhile; ?>
+					</ul>
+				<?php endif; ?>
    	 	</main>
 			<aside class="col-sm-3">
-				<a href="//wheatoncollege.edu/admissions" target="_blank" class="button" />Schedule a campus tour</a>
+				<a href="//wheatoncollege.edu/admission" target="_blank" class="button" />Schedule a campus tour</a>
 				<div class="factbox">
 					<?php if( have_rows('quick_facts') ): ?>
 						<h3>Quick Facts</h3>
@@ -30,14 +37,20 @@
 				 	<?php endif; ?>
 					<b>Features: </b><?= get_field('features'); ?>
 					<?php if( have_rows('contact_info') ): ?>
-						<h4>Contact Information</h4>
-						<ul id="contact-info">
+						<div id="contact-info">
+							<h3>Contact Information</h3>
 				    	<?php while ( have_rows('contact_info') ) : the_row(); ?>
-								<li><a href="<?=(get_sub_field('type') === 'Phone') ? 'tel:' : 'mailto:'; ?><?=get_sub_field('value');?>">
-									<?=(get_sub_field('type') === 'Phone') ? '<i class="fa fa-phone"></i>' : '<i class="fa fa-envelope"></i>'; ?> <?=get_sub_field('name'); ?>
-								</a>
+								<div class="contact">
+									<h4><?= get_sub_field('name'); ?></h4>
+									<?php if (get_sub_field('phone') != '') { ?>
+										<p><a href="tel:<?= get_sub_field('phone'); ?>"><i class="fa fa-phone"></i> <?= get_sub_field('phone'); ?></a></p>
+									<?php } ?>
+									<?php if (get_sub_field('email') != '') { ?>
+										<p><a href="mailto:<?= get_sub_field('email'); ?>"><i class="fa fa-envelope"></i> Email <?= get_sub_field('name'); ?></a></p>
+									<?php } ?>
+								</div>
 				    	<?php endwhile; ?>
-						</ul>
+						</div>
 				 	<?php endif; ?>
 
 				</div>

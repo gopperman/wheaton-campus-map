@@ -6,6 +6,7 @@ The Wheaton Map theme is built using Roots. Roots is a WordPress starter theme b
 
 ## Theme Requirements
 * [Advanced Custom Fields](http://www.advancedcustomfields.com/)
+* [Advanced Custom Fields PRO](http://www.advancedcustomfields.com/pro)
 
 ## Installation
 

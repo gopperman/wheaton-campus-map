@@ -1,20 +1,20 @@
 <?php while (have_posts()) : the_post(); ?>
-  <article <?php post_class(); ?>>
+  <article <?php post_class(); ?> itemscope itemtype="http://schema.org/Place">
     <header>
-			<div id="hero">
-				<?php if (has_post_thumbnail( $post->ID ) ): ?>
+			<?php if (has_post_thumbnail( $post->ID ) ): ?>
+				<div id="hero" itemscope itemprop="photo" itemtype="http://schema.org/ImageObject">
 					<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' ); ?>
-					<img src="<?= $image[0]; ?>" alt="<?= get_the_title(); ?>" />
+					<img src="<?= $image[0]; ?>" alt="<?= get_the_title(); ?>" itemprop="contentURL"/>
 					<div id="pulldown">
 						<a href="#main">Details &amp; Photos</a>
 					</div>
-				<?php endif; ?>
-			</div>
+				</div>
+			<?php endif; ?>
     </header>
 		<div class="container-fluid">
 	    <main id="main" class="entry-content col-sm-9">
-	      <h2 class="entry-title"><?php the_title(); ?></h2>
-				<div id="description"><?= get_field('description'); ?></div>
+	      <h2 class="entry-title" itemprop="name"><?php the_title(); ?></h2>
+				<div id="description" itemprop="description"><?= get_field('description'); ?></div>
 				<?php if( have_rows('directory') ): ?>
         	<h3>Building Directory</h3>
           <ul id="directory">
@@ -58,13 +58,13 @@
 					<div id="hours">
 						<h4>Building Hours</h4>
 				    <?php while ( have_rows('hours') ) : the_row(); ?>
-        			<p><b>Monday: </b> <?= get_sub_field('monday'); ?></p>
-        			<p><b>Tuesday: </b> <?= get_sub_field('tuesday'); ?></p>
-        			<p><b>Wednesday: </b> <?= get_sub_field('wednesday'); ?></p>
-        			<p><b>Thursday: </b> <?= get_sub_field('thursday'); ?></p>
-        			<p><b>Friday: </b> <?= get_sub_field('friday'); ?></p>
-        			<p><b>Saturday: </b> <?= get_sub_field('saturday'); ?></p>
-        			<p><b>Sunday: </b> <?= get_sub_field('sunday'); ?></p>
+        			<p itemprop="openingHours" content="Mo <?=get_sub_field('monday'); ?>"><b>Monday: </b> <?= get_sub_field('monday'); ?></p>
+        			<p itemprop="openingHours" content="Tu <?=get_sub_field('tuesday'); ?>"><b>Tuesday: </b> <?= get_sub_field('tuesday'); ?></p>
+        			<p itemprop="openingHours" content="We <?=get_sub_field('wednesday'); ?>"><b>Wednesday: </b> <?= get_sub_field('wednesday'); ?></p>
+        			<p itemprop="openingHours" content="Th <?=get_sub_field('thursday'); ?>"><b>Thursday: </b> <?= get_sub_field('thursday'); ?></p>
+        			<p itemprop="openingHours" content="Fr <?=get_sub_field('friday'); ?>"><b>Friday: </b> <?= get_sub_field('friday'); ?></p>
+        			<p itemprop="openingHours" content="Sa <?=get_sub_field('saturday'); ?>"><b>Saturday: </b> <?= get_sub_field('saturday'); ?></p>
+        			<p itemprop="openingHours" content="Mo <?=get_sub_field('sunday'); ?>"><b>Sunday: </b> <?= get_sub_field('sunday'); ?></p>
 				    <?php endwhile; ?>
 					</div>
 				<?php endif; ?>

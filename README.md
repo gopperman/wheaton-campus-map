@@ -31,6 +31,7 @@ The Wheaton Map is built on [Roots](https://roots.io/), using the Bedrock Wordpr
 	* [Bedrock Documentation](https://roots.io/bedrock/docs/)
 	* [Sage Documentation](https://roots.io/sage/docs/)
 	* [Advanced Custom Fields](http://www.advancedcustomfields.com/resources)
+	* [Advanced Custom Fields PRO](http://www.advancedcustomfields.com/pro)
 * Javascript
 	* [Grunt](http://gruntjs.com/getting-started)
 	* [jQuery](http://api.jquery.com/)
@@ -58,8 +59,9 @@ See [Documentation](#documentation) for more details on the steps below.
 
 ### Wordpress Setup
 1. Complete the normal Wordpress installation process.
-2. Install and activate Advanced Custom fields with your developer key
-3. Activate the 'Wheaton Map' Theme
+2. Install and activate Advanced Custom Fields with your developer key
+3. Install and activate Advanced Custom Fields PRO with your developer key
+4. Activate the 'Wheaton Map' Theme
 
 ## Documentation
 

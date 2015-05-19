@@ -43,7 +43,7 @@
 								<div class="contact">
 									<h4><?= get_sub_field('name'); ?></h4>
 									<?php if (get_sub_field('phone') != '') { ?>
-										<p><a href="tel:<?= get_sub_field('phone'); ?>"><i class="fa fa-phone"></i> <?= get_sub_field('phone'); ?></a></p>
+										<p itemprop="telephone"><a href="tel:<?= get_sub_field('phone'); ?>"><i class="fa fa-phone"></i> <?= get_sub_field('phone'); ?></a></p>
 									<?php } ?>
 									<?php if (get_sub_field('email') != '') { ?>
 										<p><a href="mailto:<?= get_sub_field('email'); ?>"><i class="fa fa-envelope"></i> Email <?= get_sub_field('name'); ?></a></p>
@@ -64,7 +64,7 @@
         			<p itemprop="openingHours" content="Th <?=get_sub_field('thursday'); ?>"><b>Thursday: </b> <?= get_sub_field('thursday'); ?></p>
         			<p itemprop="openingHours" content="Fr <?=get_sub_field('friday'); ?>"><b>Friday: </b> <?= get_sub_field('friday'); ?></p>
         			<p itemprop="openingHours" content="Sa <?=get_sub_field('saturday'); ?>"><b>Saturday: </b> <?= get_sub_field('saturday'); ?></p>
-        			<p itemprop="openingHours" content="Mo <?=get_sub_field('sunday'); ?>"><b>Sunday: </b> <?= get_sub_field('sunday'); ?></p>
+        			<p itemprop="openingHours" content="Su <?=get_sub_field('sunday'); ?>"><b>Sunday: </b> <?= get_sub_field('sunday'); ?></p>
 				    <?php endwhile; ?>
 					</div>
 				<?php endif; ?>
@@ -74,9 +74,9 @@
 		if( $images ): ?>
 			<div id="gallery">
         <?php foreach( $images as $image ): ?>
-					<div class="photo col-xs-12 col-sm-6">
+					<div class="photo col-xs-12 col-sm-6" itemscope itemprop="photo" itemtype="http://schema.org/ImageObject">
 	        	<a href="<?php echo $image['url']; ?>">
-  	        	<img src="<?php echo $image['sizes']['large']; ?>" alt="<?php echo $image['alt']; ?>" />
+  	        	<img src="<?php echo $image['sizes']['large']; ?>" alt="<?php echo $image['alt']; ?>" itemprop="contentURL" />
     	      </a>
 						<div class="meta">
 		          <p><?php echo $image['caption']; ?></p>

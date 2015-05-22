@@ -31,5 +31,5 @@ function create_locations() {
 add_action('init', 'create_locations');
 
 /* Custom Fields */
-include "fields.php";
+//include "fields.php";
 ?>

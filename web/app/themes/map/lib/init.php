@@ -27,14 +27,3 @@ function roots_setup() {
 }
 
 add_action( 'after_setup_theme', 'roots_setup' );
-
-
-/**
- * Enqueue scripts and stylesheets
- */
-add_action('wp_enqueue_scripts', 'wheaton_wp_enqueue_scripts', 120); // After Roots
-
-function wheaton_wp_enqueue_scripts() {
-	// Wheaton Map
-	wp_enqueue_style( 'wheaton-map', get_template_directory_uri() . '/assets/css/map.css', array( 'roots_main' ) );
-}

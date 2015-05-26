@@ -10,10 +10,14 @@
 @white:				#fff;
 @black:				#1d1b1c;
 @wheaton:			#005596;
+@wheaton_hover:     #01365f;
 @slate:				#7493c1;
-@gray-dark:		#42454a;
-@gray-light:	#a6a6a6;
-@green:				#b9c525;
+@gray-dark:         #42454a;
+@gray-light:        #a6a6a6;
+@green:				#b7c52a;
+@green_end:			#bfca3f;
+@green_hover:		#a4af26;
+@green_hover_end:	#acb239;
 @purple:			#5b3762;
 @mudkip:			#60a9e7;
 @orange:			#e05838;
@@ -75,31 +79,53 @@ h4 {font-size: 13px;}
 	color: @white;
 	border-radius: 2px;
 	background: @green;
+	background: -moz-linear-gradient(top,@green 0%, @green_end 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,@green), color-stop(100%,@green_end)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,@green 0%,@green_end 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,@green 0%,@green_end 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,@green 0%,@green_end 100%); /* IE10+ */
+	background: linear-gradient(to bottom,@green 0%,@green_end 100%); /* W3C */
 	transition: all, .2s;
 	.oswald;
 	font-weight: bold;
 	text-transform: uppercase;
 	padding: 12px 16px;
+	text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+	box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.4);
 	&:hover {
-		background: darken(@green, 15%);
 		color: @white;
 		text-decoration: none;
+		background: @green_hover; /* Old browsers */
+		background: -moz-linear-gradient(top,@green_hover 0%, @green_hover_end 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,@green_hover), color-stop(100%,@green_hover_end)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top,@green_hover 0%,@green_hover_end 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top,@green_hover 0%,@green_hover_end 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top,@green_hover 0%,@green_hover_end 100%); /* IE10+ */
+		background: linear-gradient(to bottom,@green_hover 0%,@green_hover_end 100%); /* W3C */
+		text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+		box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.4);
 	}	
 }
 
 .factbox {
+	background: @white;
 	.opensans;
 	font-size: 13px;
-	background: darken(@white, 2%);
 	padding: 12px;
 	margin-bottom: 1em;
 	h3 {
 		margin-top: 0;
-		padding-bottom: 2px;
-		border-bottom: 1px solid;
+		padding-bottom: 10px;
+		border-bottom: 1px solid rgba(0, 0, 0, 0.5);
 	}
 	h4 {
 		margin-top: 1em;
+		font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+		text-transform: none;
+	}
+	p {
+		font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+		text-transform: none;
 	}
 }
 
@@ -108,6 +134,24 @@ h4 {font-size: 13px;}
    ========================================================================== */
 
 body { }
+
+.cf:before,
+.cf:after {
+  content: ' ';
+  display: table;
+}
+
+.cf:after {
+  clear: both;
+}
+
+a {
+  color: @wheaton;
+}
+
+a:hover {
+  color: @wheaton_hover;
+}
 
 /* ==========================================================================
    Header
@@ -147,6 +191,28 @@ article {
 	}
 }
 
+.single-location {
+	article {
+		.container-fluid {
+			max-width: 1800px;
+			padding-left: 90px;
+			padding-right: 90px;
+		}
+	}
+}
+
+.single-location {
+	.contact {
+		margin-top: 2em;
+	}
+}
+
+.single-location {
+	.contact:first-of-type {
+		margin-top: 0;
+	}
+}
+
 #hero {
 	position: relative;
 }
@@ -167,7 +233,7 @@ article {
 		&:hover {
 			color: @black;
 		}
-	}	
+	}
 }
 #description {
 	padding-bottom: 25px;
@@ -175,6 +241,22 @@ article {
 		margin-bottom: 1.6em;
 	}
 }
+
+.single-location {
+	.section-title {
+		font-weight: normal;
+	}
+}
+
+.single-location {
+	.categories {
+		margin-bottom: 1em;
+		color: @purple;
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+}
+
 aside .button {
 	display: inline-block;
 	width: 100%;
@@ -188,14 +270,33 @@ aside .button {
 		margin-bottom: 1em;
 	}
 }
+
+#directory {
+	li {
+		width: 50%;
+		margin-bottom: 0.5em;
+		float: left;
+		font-weight: bold;
+	}
+}
+
 #contact-info {
-	margin-top: 1em;
+	margin-top: 3em;
 	p {
-		font-size: 13px;
+		margin-bottom: 5px;
+		font-size: 12px;
 	}
 	a, a:hover {
 		color: @black;
 		text-decoration: none;
+	}
+	a.more-info {
+		color: @wheaton;
+		font-weight: bold;
+		&:hover {
+			color: @wheaton_hover;
+			text-decoration: underline;
+		}
 	}
 }
 #hours {
@@ -274,7 +375,7 @@ aside .button {
    Footer
    ========================================================================== */
 
-.content-info { 
+.content-info {
 	.oswald;
 	padding: 25px 0;
 	background: @black;
@@ -306,7 +407,7 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
    Media Queries
    ========================================================================== */
 
-@media (min-width: @screen-sm-min) { 
+@media (min-width: @screen-sm-min) {
 	.photo {
 		&:nth-child(2n+1) {
 			padding: 0 15px 0 0;
@@ -322,7 +423,7 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
 				right: 0;
 			}
 		}
-	
+
 		.meta {
 			position: absolute;
 			top: 15px;

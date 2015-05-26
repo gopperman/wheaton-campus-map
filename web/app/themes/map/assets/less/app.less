@@ -444,3 +444,51 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
 @media (min-width: @screen-md-min) { }
 
 @media (min-width: @screen-lg-min) { }
+
+
+@media (min-width: @screen-sm-min) and (max-width: @screen-lg-min) {
+	.single-location {
+		.entry-content.col-sm-9 {
+			width: 66.66666667%;
+		}
+		aside.col-sm-3 {
+			width: 33.33333333%;
+		}
+	}
+}
+
+@media (max-width: @screen-lg-min) {
+	.single-location {
+		article {
+			.container-fluid {
+				padding-left: 15px;
+				padding-right: 15px;
+			}
+		}
+	}
+}
+
+@media (max-width: @screen-sm-min) {
+	#gallery {
+		padding: 0;
+	}
+
+	.photo {
+		img {
+			padding: 0;
+		}
+	}
+
+	.meta {
+		p {
+			margin: 0;
+		}
+	}
+
+	aside {
+		.button {
+			margin-top: 1em;
+		}
+	}
+}
+

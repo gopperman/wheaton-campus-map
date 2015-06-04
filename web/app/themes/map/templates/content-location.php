@@ -3,8 +3,21 @@
     <header>
 			<?php if (has_post_thumbnail( $post->ID ) ): ?>
 				<div id="hero" itemscope itemprop="photo" itemtype="http://schema.org/ImageObject">
-					<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'location-featured-image' ); ?>
-					<img src="<?= $image[0]; ?>" alt="<?= get_the_title(); ?>" itemprop="contentURL"/>
+					<?php
+						$post_thumbnail_id = get_post_thumbnail_id( $post->ID );
+						$image_sizes = array(
+							'location-featured-image' => wp_get_attachment_image_src( $post_thumbnail_id, 'location-featured-image' ),
+							'wheaton-map-480x9999' => wp_get_attachment_image_src( $post_thumbnail_id, 'wheaton-map-480x9999' ),
+							'large' => wp_get_attachment_image_src( $post_thumbnail_id, 'large' ),
+						);
+					?>
+					<picture>
+						<!--[if IE 9]><video style="display: none;"><![endif]-->
+						<source media="(min-width: 1024px)" srcset="<?php echo esc_url( $image_sizes['location-featured-image'][0] ); ?>" />
+						<source media="(min-width: 480px)" srcset="<?php echo esc_url( $image_sizes['large'][0] ); ?>" />
+						<!--[if IE 9]></video><![endif]-->
+						<img src="<?php echo esc_url( $image_sizes['wheaton-map-480x9999'][0] ); ?>" alt="<? echo esc_attr( get_the_title() ); ?>"  itemprop="contentURL" />
+					</picture>
 					<div id="pulldown">
 						<a href="#main">Details &amp; Photos</a>
 					</div>
@@ -73,7 +86,7 @@
 		</div>
 		<?php
 			$images = get_field('photo_gallery');
-			if( $images ):
+			if ( $images ):
 				// Keep track of images output
 				$image_num = 0;
 		?>
@@ -88,12 +101,17 @@
 					<?php endif; ?>
 
 					<div class="photo col-xs-12 col-sm-6" itemscope itemprop="photo" itemtype="http://schema.org/ImageObject">
-						<a href="<?php echo $image['url']; ?>">
-							<img src="<?php echo $image['sizes']['large']; ?>" alt="<?php echo $image['alt']; ?>" itemprop="contentURL" />
-						</a>
+						<picture>
+							<!--[if IE 9]><video style="display: none;"><![endif]-->
+							<source media="(min-width: 480px)" data-srcset="<?php echo esc_url( $image['sizes']['large'] ); ?>" />
+							<!--[if IE 9]></video><![endif]-->
+							<img data-src="<?php echo esc_url( $image['sizes']['wheaton-map-480x9999'] ); ?>" alt="<? echo esc_attr( $image['alt'] ); ?>" class="lazyload" itemprop="contentURL" />
+						</picture>
 						<div class="meta">
-							<p><?php echo $image['caption']; ?></p>
-							<a href="#" class="enlarge button hidden-xs" rel="nofollow"><i class="fa fa-search-plus"></i> View Larger</a>
+							<p class="hidden-xs"><?php echo $image['caption']; ?></p>
+							<a href="<?php echo esc_url( $image['sizes']['large'] ); ?>" class="enlarge button hidden-xs" rel="nofollow" data-toggle="lightbox" data-gallery="multiimages" data-title="<?php echo esc_attr( $image['title'] ); ?>" data-footer="<?php echo esc_attr( $image['caption'] ); ?>">
+								<i class="fa fa-search-plus"></i> View Larger
+							</a>
 						</div>
 					</div>
 

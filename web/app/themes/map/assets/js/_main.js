@@ -51,6 +51,15 @@ var Roots = {
 					}
 				}
 			});
+
+			// Ekko Lightbox
+			$( document ).delegate( '*[data-toggle="lightbox"]', 'click', function( event ) {
+				// Prevent default
+				event.preventDefault();
+
+				// Add Lightbox
+				jQuery( this ).ekkoLightbox();
+			} );
    }
   },
   // Home page

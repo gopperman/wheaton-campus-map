@@ -24,6 +24,7 @@ function roots_setup() {
 
 	// Add Image Sizes
 	add_image_size( 'location-featured-image', 1920, 9999, false ); // Featured Image for Single Locations
+	add_image_size( 'wheaton-map-480x9999', 480, 9999, false ); // Image for Single Locations (responsive)
 }
 
 add_action( 'after_setup_theme', 'roots_setup' );

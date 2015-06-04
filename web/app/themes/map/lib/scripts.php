@@ -13,6 +13,9 @@
 function roots_scripts() {
   wp_enqueue_style('roots_main', get_template_directory_uri() . '/assets/css/main.min.css', false, '3588fc478065a358a87c8e64f799837d');
 
+  // Ekko Lightbox
+  wp_enqueue_style( 'ekko-lightbox', get_template_directory_uri() . '/assets/css/ekko-lightbox.min.css', array( 'roots_main' ), '3588fc478065a358a87c8e64f799837d' );
+
   // jQuery is loaded using the same method from HTML5 Boilerplate:
   // Grab Google CDN's latest jQuery with a protocol relative URL; fallback to local if offline
   // It's kept in the header instead of footer to avoid conflicts with plugins.
@@ -31,6 +34,15 @@ function roots_scripts() {
   wp_enqueue_script('modernizr');
   wp_enqueue_script('jquery');
   wp_enqueue_script('roots_scripts');
+
+  // Ekko Lightbox
+  wp_enqueue_script( 'ekko-lightbox', get_template_directory_uri() . '/assets/js/ekko-lightbox.min.js', array( 'jquery', 'roots_scripts' ), 'ae4766c66f2e7e0dee39525411a89b03', true );
+
+  // Picturefill Polyfill
+  wp_enqueue_script( 'picturefill', get_template_directory_uri() . '/assets/js/picturefill.min.js', false, 'ae4766c66f2e7e0dee39525411a89b03' );
+
+  // Lazysizes Lazy load images)
+  wp_enqueue_script( 'lazysizes', get_template_directory_uri() . '/assets/js/lazysizes.min.js', false, 'ae4766c66f2e7e0dee39525411a89b03' );
 }
 add_action('wp_enqueue_scripts', 'roots_scripts', 100);
 

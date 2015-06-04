@@ -6094,6 +6094,10 @@ aside .button {
 .photo:hover .meta {
   opacity: 1;
 }
+.ekko-lightbox .modal-content {
+  max-width: 90%;
+  margin: auto;
+}
 /* ==========================================================================
    Primary Content
    ========================================================================== */

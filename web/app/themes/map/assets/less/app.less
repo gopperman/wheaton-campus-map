@@ -22,6 +22,8 @@
 @mudkip:			#60a9e7;
 @orange:			#e05838;
 @yellow:			#efcb43;
+@modal_arrow:       #201e1f;
+@modal_arrow_bg:    #c0bebf;
 
 /* ==========================================================================
    Typography
@@ -343,6 +345,73 @@ aside .button {
 	.modal-content {
 		max-width: 90%;
 		margin: auto;
+		background-color: transparent;
+		border: none;
+		-webkit-box-shadow: none;
+		box-shadow: none;
+	}
+
+	.modal-header {
+		display: none;
+	}
+
+	.modal-body {
+		padding-bottom: 10px;
+	}
+
+	.modal-footer {
+		margin-top: 0;
+		padding-top: 0;
+		color: #fff;
+		border: none;
+		font-size: 12px;
+	}
+
+	.glyphicon-menu-left {
+		padding-left: 15px;
+		left: -8%;
+		float: left;
+		text-align: left;
+	}
+
+	.glyphicon-menu-right {
+		padding-right: 15px;
+		right: -8%;
+		float: right;
+		text-align: right;
+	}
+}
+
+.ekko-lightbox-nav-overlay {
+	a {
+		color: @modal_arrow;
+		font-size: 16px;
+		text-shadow: none;
+		opacity: 1;
+		text-decoration: none;
+	}
+
+	a:hover {
+		color: @modal_arrow;
+	}
+
+	a:empty {
+		width: 58%;
+		position: absolute;
+	}
+
+	a:before {
+		padding: 3px 5px;
+		background: @modal_arrow_bg;
+		border-radius: 50%;
+	}
+
+	a:first-child:before {
+		padding: 6px 7px 5px;
+	}
+
+	a:nth-child(2n):before {
+		padding: 6px 7px 5px;
 	}
 }
 

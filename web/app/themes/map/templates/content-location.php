@@ -109,7 +109,7 @@
 						</picture>
 						<div class="meta">
 							<p class="hidden-xs"><?php echo $image['caption']; ?></p>
-							<a href="<?php echo esc_url( $image['sizes']['large'] ); ?>" class="enlarge button hidden-xs" rel="nofollow" data-toggle="lightbox" data-gallery="multiimages" data-title="<?php echo esc_attr( $image['title'] ); ?>" data-footer="<?php echo esc_attr( $image['caption'] ); ?>">
+							<a href="<?php echo esc_url( $image['sizes']['large'] ); ?>" class="enlarge button hidden-xs" rel="nofollow" data-toggle="lightbox" data-gallery="multiimages" data-footer="<?php echo esc_attr( $image['caption'] ); ?>">
 								<i class="fa fa-search-plus"></i> View Larger
 							</a>
 						</div>

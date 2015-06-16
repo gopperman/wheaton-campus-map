@@ -58,7 +58,12 @@ var Roots = {
 				event.preventDefault();
 
 				// Add Lightbox
-				jQuery( this ).ekkoLightbox();
+				jQuery( this ).ekkoLightbox( {
+					// Hide the close button
+					always_show_close: false,
+					left_arrow_class: '.glyphicon .glyphicon-menu-left',
+					right_arrow_class: '.glyphicon .glyphicon-menu-right'
+				} );
 			} );
    }
   },

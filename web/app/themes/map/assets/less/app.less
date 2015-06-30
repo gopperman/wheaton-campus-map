@@ -24,6 +24,7 @@
 @yellow:			#efcb43;
 @modal_arrow:       #201e1f;
 @modal_arrow_bg:    #c0bebf;
+@dark_blue:			#17212d;
 
 /* ==========================================================================
    Typography
@@ -182,58 +183,61 @@ h4 {font-size: 13px;}
 	width: 400px;
 	z-index: 1000;
 
-	.list-view-top, .list-view-bottom {
+	.list-view-inner {
 		width: 100%;
-		position: absolute;
-	}
-
-	.list-view-top {
-		padding: 2em 2em 0;
-		height: 25%;
-		top: 0;
+		height: 100%;
+		overflow: auto;
 	}
 
 	.list-view-search {
 		width: 100%;
-	}
+		padding: 1em 1em 0;
+		position: relative;
 
 		.list-view-location-search {
-			width: 85%;
-			padding: 0.5em;
-			float: left;
+			width: 100%;
+			padding: 0.25em 2em 0.25em 0.5em;
 			border: 1px solid @modal_arrow_bg;
 			line-height: 1.75em;
 		}
 
 		.list-view-location-search-submit {
-			width: 12%;
-			float: right;
+			padding: 0.4em 0.5em;
+			color: @modal_arrow_bg;
+			background: transparent;
+			border: none;
+			font-size: 1em;
+			position: absolute;
+			top: 1.25em;
+			right: 1.25em;
 		}
-
-			&:before {
-				margin-left: -10%;
-			}
+	}
 
 	.list-view-categories {
-		padding: 1em 0;
-	}
+		padding: 0.5em 1em;
+		font-size: 10px;
+		text-transform: uppercase;
 
 		.list-view-category {
+			width: 50%;
 			padding: 0 0.5em;
-			display: inline-block;
-		}
+			float: left;
 
-	.list-view-bottom {
-		height: 75%;
-		padding: 2em 0;
-		bottom: 0;
-		overflow: auto;
+			label {
+				vertical-align: middle;
+				margin-top: -2px;
+			}
+		}
 	}
 
+	.list-view-locations {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+
 		.list-view-location {
-			padding: 1em 2em;
+			padding: 1em;
 			border-bottom: 1px solid @modal_arrow_bg;
-		}
 
 			.list-view-location-image {
 				width: 30%;
@@ -248,12 +252,88 @@ h4 {font-size: 13px;}
 			.list-view-location-details {
 				width: 65%;
 				float: right;
+
+				.list-view-location-title {
+					margin-bottom: 0.5em;
+				}
+
+				.list-view-location-categories {
+					margin-bottom: 0.5em;
+					color: @black;
+					font-size: 12px;
+					font-weight: bold;
+
+					.list-view-location-category {
+						position: relative;
+						padding-left: 22px;
+						padding-right: 1em;
+						line-height: 22px;
+						display: inline-block;
+					}
+
+					.list-view-location-category:before {
+						content: '';
+						width: 18px;
+						height: 18px;
+						background: @black;
+						border: 2px solid #fff;
+						border-radius: 9px;
+						display: block;
+						position: absolute;
+						top: 0;
+						left: 0;
+						box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.25);
+					}
+
+					.list-view-location-category.academics:before {
+						background: @purple;
+					}
+
+					.list-view-location-category.administrative:before {
+						/* TODO */
+					}
+
+					.list-view-location-category.athletics:before {
+						background: @mudkip;
+					}
+
+					.list-view-location-category.dining:before {
+						background: @orange;
+					}
+
+					.list-view-location-category.residential:before {
+						background: @yellow;
+					}
+
+					.list-view-location-category.student-life:before {
+						/* TODO */
+					}
+				}
+
+				.list-view-location-description {
+					p {
+						margin-bottom: 0;
+						font-size: 12px;
+					}
+				}
 			}
+		}
+
+		.list-view-location.list-view-location-category-name {
+			font-weight: bold;
+			text-transform: uppercase;
+		}
+	}
 
 	.list-view-button {
-		width: 7em;
+		width: 120px;
+		background: @dark_blue;
+		border: 2px solid @white;
+		border-top: none;
+		font-weight: normal;
 		text-align: center;
 		display: inline-block;
+		box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.1);
 		position: absolute;
 		top: 240px;
 		left: 400px;
@@ -261,6 +341,15 @@ h4 {font-size: 13px;}
 		transform: rotate(-90deg);
 		-webkit-transform-origin: top left;
 		transform-origin: top left;
+
+			&:active, &:focus, &:visited {
+				color: @white;
+				text-decoration: none;
+			}
+
+			span {
+				padding-right: 5px;
+			}
 	}
 }
 
@@ -695,7 +784,7 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
 	}
 }
 
-@media (min-width: @screen-md-min) { 
+@media (min-width: @screen-md-min) {
 	#map {
 		background-size: 100% auto !important;
 		&.z1 {
@@ -741,6 +830,9 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
 	}
 }
 
+
+@media (max-width: @screen-md-min) { }
+
 @media (max-width: @screen-sm-min) {
 	#gallery {
 		padding: 0;
@@ -762,6 +854,47 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
 		.button {
 			margin-top: 1em;
 		}
+	}
+
+	/* List View */
+	.list-view {
+		width: 50%;
+
+		.list-view-button {
+			left: 100%;
+		}
+
+		.list-view-categories {
+
+			.list-view-category {
+				width: 50%;
+			}
+		}
+	}
+
+	.list-view.closed {
+		left: -50%;
+	}
+}
+
+
+@media (max-width: @screen-xs-min) {
+	/* List View */
+	.list-view {
+		width: 100%;
+
+		/* TODO: Close button */
+		.list-view-inner {
+			padding-top: 2em;
+		}
+
+		.list-view-button {
+			left: 100%;
+		}
+	}
+
+	.list-view.closed {
+		left: -100%;
 	}
 }
 

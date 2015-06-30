@@ -14,7 +14,7 @@ function roots_scripts() {
   // Ekko Lightbox
   wp_enqueue_style( 'ekko-lightbox', get_template_directory_uri() . '/assets/css/ekko-lightbox.min.css', false, '3588fc478065a358a87c8e64f799837d' );
 
-  wp_enqueue_style('roots_main', get_template_directory_uri() . '/assets/css/main.min.css', array( 'ekko-lightbox' ), '0d1b1a2288c18234e44103db60e57d2e');
+  wp_enqueue_style('roots_main', get_template_directory_uri() . '/assets/css/main.min.css', array( 'ekko-lightbox' ), '8d3f4b23f77a13b79b1160222cb62e60');
 
   // jQuery is loaded using the same method from HTML5 Boilerplate:
   // Grab Google CDN's latest jQuery with a protocol relative URL; fallback to local if offline
@@ -30,7 +30,7 @@ function roots_scripts() {
   }
 
   wp_register_script('modernizr', get_template_directory_uri() . '/assets/js/vendor/modernizr-2.7.0.min.js', array(), null, false);
-  wp_register_script('roots_scripts', get_template_directory_uri() . '/assets/js/scripts.min.js', array(), '28185c84b1d7304aeaaddeba22e1009f', true);
+  wp_register_script('roots_scripts', get_template_directory_uri() . '/assets/js/scripts.min.js', array(), '7eb080ef4a661e6f54042908bf3fae40', true);
   wp_enqueue_script('modernizr');
   wp_enqueue_script('jquery');
   wp_enqueue_script('roots_scripts');

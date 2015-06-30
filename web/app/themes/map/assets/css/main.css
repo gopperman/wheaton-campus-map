@@ -6040,6 +6040,7 @@ h4 {
    ========================================================================== */
 .button {
   color: #ffffff;
+  border: none;
   border-radius: 2px;
   background: #b7c52a;
   background: -moz-linear-gradient(top, #b7c52a 0%, #bfca3f 100%);
@@ -6081,6 +6082,9 @@ h4 {
   /* W3C */
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
   box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.4);
+}
+.button.glyphicon {
+  font-family: 'Glyphicons Halflings';
 }
 .factbox {
   background: #ffffff;
@@ -6137,6 +6141,89 @@ h4 {
   background: url(/app/themes/map/assets/img/map-sm.png) no-repeat;
 }
 /* ==========================================================================
+   List View
+   ========================================================================== */
+.list-view {
+  height: 100%;
+  background-color: #ffffff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 400px;
+  z-index: 1000;
+}
+.list-view .list-view-top,
+.list-view .list-view-bottom {
+  width: 100%;
+  position: absolute;
+}
+.list-view .list-view-top {
+  padding: 2em 2em 0;
+  height: 25%;
+  top: 0;
+}
+.list-view .list-view-search {
+  width: 100%;
+}
+.list-view .list-view-location-search {
+  width: 85%;
+  padding: 0.5em;
+  float: left;
+  border: 1px solid #c0bebf;
+  line-height: 1.75em;
+}
+.list-view .list-view-location-search-submit {
+  width: 12%;
+  float: right;
+}
+.list-view:before {
+  margin-left: -10%;
+}
+.list-view .list-view-categories {
+  padding: 1em 0;
+}
+.list-view .list-view-category {
+  padding: 0 0.5em;
+  display: inline-block;
+}
+.list-view .list-view-bottom {
+  height: 75%;
+  padding: 2em 0;
+  bottom: 0;
+  overflow: auto;
+}
+.list-view .list-view-location {
+  padding: 1em 2em;
+  border-bottom: 1px solid #c0bebf;
+}
+.list-view .list-view-location-image {
+  width: 30%;
+  float: left;
+}
+.list-view img {
+  max-width: 100%;
+  height: auto;
+}
+.list-view .list-view-location-details {
+  width: 65%;
+  float: right;
+}
+.list-view .list-view-button {
+  width: 7em;
+  text-align: center;
+  display: inline-block;
+  position: absolute;
+  top: 240px;
+  left: 400px;
+  -webkit-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  -webkit-transform-origin: top left;
+  transform-origin: top left;
+}
+.list-view.closed {
+  left: -400px;
+}
+/* ==========================================================================
    Base
    ========================================================================== */
 .cf:before,
@@ -6152,6 +6239,34 @@ a {
 }
 a:hover {
   color: #01365f;
+}
+.screen-reader-text {
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+.screen-reader-text:hover,
+.screen-reader-text:active,
+.screen-reader-text:focus {
+  background: #f1f1f1;
+  border-radius: 3px;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+  clip: auto !important;
+  color: #21759b;
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  height: auto;
+  left: 5px;
+  line-height: normal;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 100000;
+  /* Above WP toolbar. */
 }
 /* ==========================================================================
    Header

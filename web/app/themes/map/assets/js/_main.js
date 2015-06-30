@@ -63,6 +63,32 @@ var Roots = {
 					right_arrow_class: '.glyphicon .glyphicon-menu-right'
 				} );
 			} );
+
+		/*
+		 * Map - List View
+		 */
+		var $list_view_button = $( '.list-view-button' ),
+			$list_view = $list_view_button.parent();
+
+		// List View Button Click
+		$list_view_button.click( function() {
+			// If the list view is currently closed
+			if ( $list_view.hasClass( 'closed' ) ) {
+				// Open the list view
+				$list_view.removeClass( 'closed' );
+
+				// Change the label of the list view button
+				$list_view_button.html( $list_view_button.data( 'close-label' ) );
+			}
+			// Otherwise it is open
+			else {
+				// Close the list view
+				$list_view.removeClass( 'closed' );
+
+				// Change the label of the list view button
+				$list_view_button.html( $list_view_button.data( 'open-label' ) );
+			}
+		} );
    }
   },
   // Home page

@@ -487,6 +487,7 @@ a {
    ========================================================================== */
 .navbar {
 	margin: 0;
+	position: relative;
 }
 .navbar-default {
 	background: @wheaton;
@@ -507,8 +508,38 @@ a {
 		background: transparent;
 	}
 }
-
-
+.navbar-header, .navbar-collapse {
+	display: inline-block;
+	float: left;
+}
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+	border: 0px solid transparent;
+}
+#ctas {
+	display: inline-block;
+	float: right;
+	margin-top: 1em;
+	.button {
+		padding: 6px 24px;
+	}
+}
+.social {
+	displaY: inline-block;
+	a {
+		display: inline-block;
+		border-radius: 24px;
+		width: 24px;
+		height: 24px;
+		background: #fff;
+		text-align: center;
+		margin-right: 4px;
+		&:last-child {margin-right: 10px;}
+	}
+	.fa {
+		display: inline-block;
+		margin: 4px 0 0 4px;
+	}
+}
 /* ==========================================================================
    Location Content
    ========================================================================== */
@@ -792,7 +823,7 @@ aside .button {
 	bottom: 0;
 	width: 100%;
 	.oswald;
-	padding: 25px 0;
+	padding: 15px 0;
 	background: @black;
 	color: @white;
 	a {
@@ -800,6 +831,12 @@ aside .button {
 		text-decoration: none;
 		&:hover {
 			text-decoration: underline;
+		}
+	}
+	.social {
+		float: right;
+		a, a:hover {
+			color: @black;
 		}
 	}
 }

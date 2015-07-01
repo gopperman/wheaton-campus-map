@@ -171,15 +171,76 @@ h4 {font-size: 13px;}
 		background: url(/app/themes/map/assets/img/map-sm.png) no-repeat;
 	}
 }
+.location {
+	list-style-type: none;
+	position: absolute;
+	display: inline-block;
+	&:hover .quicklook {
+		display: inline-block;
+	}
+}
+.quicklook {
+	display: none;
+	z-index: 30;
+	position: absolute;
+	width: 380px;
+	bottom: 20px;
+	left: 0;
+	background: @black;
+	color: @white;
+	padding: 10px;
+	h2 {
+		font-size: 16px;
+		padding-bottom:5px;
+		a, a:hover, a:active, a:visited {
+			color: @white;
+		}
+	}
+	.col-xs-7 {
+		padding-left: 10px;
+		padding-right: 0;
+	}
+ .col-xs-5 {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	.thumb {
+		width: 100%;
+	}
+	.button {
+		background: @white;
+		color: @black;
+		text-shadow: none;
+		padding: 2px 16px;
+		display: table;
+		font-weight: 500;
+		font-size: 14px;
+	}
+}
+.academic {
+	.pin{background:@purple;}
+	h2 {border-bottom: 2px solid @purple;}
+}
+.athletic {
+	.pin {background:@mudkip;}
+	h2 {border-bottom: 2px solid @mudkip;}
+}
+.dining {
+	.pin {background:@orange;}
+	h2 {border-bottom: 2px solid @orange;}
+
+}
+.residential {
+	.pin {background:@yellow;}
+	h2 {border-bottom: 2px solid @yellow;}
+}
 .pin {
 	width: 16px;
   height: 16px;
-  background: #f00;
+  background: #000;
   border-radius: 16px;
   border: 2px solid #fff;
-  top: 50%;
-  left: 56%;
-  position: absolute;
+	display: block;
 }
 
 /* ==========================================================================

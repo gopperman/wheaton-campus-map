@@ -14,11 +14,7 @@ function roots_scripts() {
   // Ekko Lightbox
   wp_enqueue_style( 'ekko-lightbox', get_template_directory_uri() . '/assets/css/ekko-lightbox.min.css', false, '3588fc478065a358a87c8e64f799837d' );
 
-<<<<<<< HEAD
-  wp_enqueue_style('roots_main', get_template_directory_uri() . '/assets/css/main.min.css', array( 'ekko-lightbox' ), '66b4d4c58ccd1dfb92c5c7014fdf7912');
-=======
-  wp_enqueue_style('roots_main', get_template_directory_uri() . '/assets/css/main.min.css', array( 'ekko-lightbox' ), '8d3f4b23f77a13b79b1160222cb62e60');
->>>>>>> e8ac49a0b29df2b7ef1abbc8dabb097902418187
+  wp_enqueue_style('roots_main', get_template_directory_uri() . '/assets/css/main.min.css', array( 'ekko-lightbox' ), 'afba3729c3a446bbc91bbf2febe1faab');
 
   // jQuery is loaded using the same method from HTML5 Boilerplate:
   // Grab Google CDN's latest jQuery with a protocol relative URL; fallback to local if offline

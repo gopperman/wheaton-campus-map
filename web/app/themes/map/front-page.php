@@ -51,15 +51,57 @@
 				// Store a reference to this post in the first category array
 				if ( isset( $map_locations_categories[$term_id] ) )
 					$map_locations_categories[$term_id][] = $map_locations->post;
-
 			}
 		}
 ?>
 
 <?php get_template_part( 'templates/map', 'list-view' ); // List View ?>
-
+<?php 
+	//Build a persistent locations array
+	$locations = array();
+	$query_locations = new WP_Query( array(
+		'post_type' => 'location',
+		'posts_per_page' => $location_count->publish,
+	) );
+	while ($query_locations->have_posts()) {
+		$query_locations->the_post();
+  	$row = array(
+    	'title' => get_the_title(),
+    	'permalink' => get_the_permalink(),
+    	'tags' => get_the_tags(),
+    	'categories' => get_the_category()
+  	);
+		if ( has_post_thumbnail() ) {
+			$thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id(get_the_ID() ));
+			$row['thumbnail'] = $thumbnail[0];
+		}
+  	$fields = get_fields();
+  	if ($fields) {
+    	foreach($fields as $field_name => $value) {
+      	$field = get_field_object($field_name, false, array('load_value' => false));
+      	$row[$field_name] = $value;
+    	}
+  	}
+  	$locations[] = $row;
+	}
+	wp_reset_postdata();
+?>
 <div id="viewport">
 	<div id="map" class="z1">
-		<a href="#overlay" class="pin residential" ></a>
+		<ul id="map_locations">
+			<? foreach($locations as $location) { ?>
+				<li class="location <?= strtolower($location['categories'][0]->name); ?>" style='left:<?= $location['x_coord']; ?>%;top:<?= $location['y_coord']; ?>%;'>
+					<div class="quicklook">
+						<div class="col-xs-5">
+							<img src="<?=$location['thumbnail']; ?>" alt="<?=$location['title']; ?>" class="thumb" />
+						</div>
+						<div class="col-xs-7">
+							<h2><a href="<?= $location['permalink']; ?>"><?=$location['title']; ?></a></h2>
+							<a href="<?= $location['permalink'] ?>" class="button more">More</a>
+						</div>
+					</div>
+					<a href="#" class="pin"></a>
+			<? } ?>
+		</ul>
 	</div>
 </div>

@@ -7,24 +7,26 @@
 /* ==========================================================================
    Colors
    ========================================================================== */
-@white:				#fff;
-@black:				#1d1b1c;
-@wheaton:			#005596;
-@wheaton_hover:     #01365f;
-@slate:				#7493c1;
-@gray-dark:         #42454a;
-@gray-light:        #a6a6a6;
-@green:				#b7c52a;
-@green_end:			#bfca3f;
-@green_hover:		#a4af26;
+@white:						#fff;
+@black:						#1d1b1c;
+@wheaton:					#005596;
+@wheaton_hover:		#01365f;
+@slate:						#7493c1;
+@gray-dark:				#42454a;
+@gray-light:			#a6a6a6;
+@green:						#b7c52a;
+@green_end:				#bfca3f;
+@green_hover:			#a4af26;
 @green_hover_end:	#acb239;
-@purple:			#5b3762;
-@mudkip:			#60a9e7;
-@orange:			#e05838;
-@yellow:			#efcb43;
-@modal_arrow:       #201e1f;
-@modal_arrow_bg:    #c0bebf;
-@dark_blue:			#17212d;
+@purple:					#5b3762;
+@mudkip:					#60a9e7;
+@blue:						#005596;
+@green-bright:		#4ab838;
+@orange:					#e05838;
+@yellow:					#efcb43;
+@modal_arrow:     #201e1f;
+@modal_arrow_bg:  #c0bebf;
+@dark_blue:				#17212d;
 
 /* ==========================================================================
    Typography
@@ -217,13 +219,17 @@ h4 {font-size: 13px;}
 		font-size: 14px;
 	}
 }
-.academic {
+.academic, .academics {
 	.pin{background:@purple;}
 	h2 {border-bottom: 2px solid @purple;}
 }
-.athletic {
+.athletic, .athletics {
 	.pin {background:@mudkip;}
 	h2 {border-bottom: 2px solid @mudkip;}
+}
+.administrative {
+	.pin {background:@yellow;}
+	h2 {border-bottom: 2px solid @yellow;}
 }
 .dining {
 	.pin {background:@orange;}
@@ -231,9 +237,14 @@ h4 {font-size: 13px;}
 
 }
 .residential {
-	.pin {background:@yellow;}
-	h2 {border-bottom: 2px solid @yellow;}
+	.pin {background:@blue;}
+	h2 {border-bottom: 2px solid @blue;}
 }
+.student-life {
+	.pin {background:@green-bright;}
+	h2 {border-bottom: 2px solid @green-bright;}
+}
+
 .pin {
 	width: 16px;
   height: 16px;

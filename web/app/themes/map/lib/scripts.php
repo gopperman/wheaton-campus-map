@@ -14,7 +14,7 @@ function roots_scripts() {
   // Ekko Lightbox
   wp_enqueue_style( 'ekko-lightbox', get_template_directory_uri() . '/assets/css/ekko-lightbox.min.css', false, '3588fc478065a358a87c8e64f799837d' );
 
-  wp_enqueue_style('roots_main', get_template_directory_uri() . '/assets/css/main.min.css', array( 'ekko-lightbox' ), 'a48f8470f8a7f146faf5398739a4fc24');
+  wp_enqueue_style('roots_main', get_template_directory_uri() . '/assets/css/main.min.css', array( 'ekko-lightbox' ), 'aa05fcf317a3b79e2aaf7fb37faffdc7');
 
   // jQuery is loaded using the same method from HTML5 Boilerplate:
   // Grab Google CDN's latest jQuery with a protocol relative URL; fallback to local if offline

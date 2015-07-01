@@ -23,6 +23,9 @@ var Roots = {
   common: {
     init: function() {
       // JavaScript to be fired on all pages
+		var $document = $( document ),
+			$body = $( 'body' );
+
 			console.log('ok');
 			//Asynchronously load external CSS - Font Awesome
 			var fa = document.createElement('link');
@@ -52,19 +55,122 @@ var Roots = {
 				}
 			});
 
-			// Ekko Lightbox
-			$( document ).delegate( '*[data-toggle="lightbox"]', 'click', function( event ) {
-				// Prevent default
-				event.preventDefault();
+		// Ekko Lightbox
+		$document.delegate( '*[data-toggle="lightbox"]', 'click', function( event ) {
+			// Prevent default
+			event.preventDefault();
 
-				// Add Lightbox
-				jQuery( this ).ekkoLightbox( {
-					// Hide the close button
-					always_show_close: false,
-					left_arrow_class: '.glyphicon .glyphicon-menu-left',
-					right_arrow_class: '.glyphicon .glyphicon-menu-right'
-				} );
+			// Add Lightbox
+			jQuery( this ).ekkoLightbox( {
+				left_arrow_class: '.glyphicon .glyphicon-menu-left',
+				right_arrow_class: '.glyphicon .glyphicon-menu-right'
 			} );
+		} );
+
+		/*
+		 * Map - List View
+		 */
+		var $list_view_button = $( '.list-view-button' ),
+			$list_view = $list_view_button.parent(),
+			$list_view_locations_wrap = $list_view.find( '.list-view-locations' ),
+			$list_view_locations = $list_view_locations_wrap.find( '.list-view-location' ),
+			$list_view_filter_sections = $list_view.find( '.list-view-filter' ),
+			$list_view_filters = $list_view_filter_sections.find( 'input' );
+
+		// List View button click
+		$list_view_button.on( 'touch click', function( event ) {
+			// Prevent default
+			event.preventDefault();
+
+			// Prevent propagation (bubbling) to other elements
+			event.stopPropagation();
+
+			// If the list view is currently closed
+			if ( $list_view.hasClass( 'closed' ) ) {
+				// Open the list view
+				$list_view.removeClass( 'closed' );
+
+				// Change the label of the list view button
+				$list_view_button.html( $list_view_button.data( 'close-label' ) );
+
+				// Adjust the body class
+				$body.addClass( 'list-view-open' );
+			}
+			// Otherwise it is open
+			else {
+				// Close the list view
+				$list_view.addClass( 'closed' );
+
+				// Change the label of the list view button
+				$list_view_button.html( $list_view_button.data( 'open-label' ) );
+
+				// Adjust the body class
+				$body.removeClass( 'list-view-open' );
+			}
+		} );
+
+		// Document click
+		$document.on( 'touch click', function( event ) {
+			// Close the list view
+			$list_view.addClass( 'closed' );
+
+			// Change the label of the list view button
+			$list_view_button.html( $list_view_button.data( 'open-label' ) );
+
+			// Adjust the body class
+			$body.removeClass( 'list-view-open' );
+		} );
+
+		// List View location links click
+		$list_view_locations_wrap.on( 'touch click', function( event ) {
+			// Prevent propagation (bubbling) to other elements
+			event.stopPropagation();
+		} );
+
+		// List View filter click
+		$list_view_filter_sections.on( 'touch click', function( event ) {
+			// Prevent propagation (bubbling) to other elements
+			event.stopPropagation();
+		} );
+
+		// List View category filter change
+		$list_view_filters.on( 'change', function( event ) {
+			var $self = $( this),
+				category;
+
+			// Categories
+			if ( $self.hasClass( 'list-view-filter-category' ) ) {
+				// Store a reference to the category
+				category = $self.val();
+
+				// Loop through list locations
+				$list_view_locations.each( function() {
+					var $this = $( this );
+
+					// Category match
+					if ( $this.hasClass( category ) ) {
+						// Checked
+						if ( $self.prop( 'checked' ) ) {
+							$this.removeClass( 'hidden category-hidden' );
+						}
+						// Unchecked
+						else {
+							$this.addClass( 'hidden category-hidden' );
+						}
+					}
+				} );
+			}
+		} );
+
+		// List View search filter input, keyup, change, search
+		$list_view_filters.on( 'input keyup change search', function( event ) {
+			var $this = $( this );
+
+			// Search
+			if ( $this.hasClass( 'list-view-filter-search' ) ) {
+				// TODO
+			}
+		} );
    }
   },
   // Home page

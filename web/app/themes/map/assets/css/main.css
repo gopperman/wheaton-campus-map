@@ -6120,6 +6120,7 @@ h4 {
   bottom: 0;
 }
 #map {
+  position: relative;
   background-size: 100% auto !important;
   min-width: 100vw;
   min-height: 100vh;
@@ -6128,17 +6129,133 @@ h4 {
 #map.z1 {
   height: 1080px;
   width: 1185px;
-  background: url(/app/themes/map/assets/img/map-sm.png) no-repeat;
+  background: url(../img/map-sm.png) no-repeat;
 }
 #map.z2 {
   height: 1620px;
   width: 1777px;
-  background: url(/app/themes/map/assets/img/map-sm.png) no-repeat;
+  background: url(../img/map-sm.png) no-repeat;
 }
 #map.z3 {
   height: 2160px;
   width: 2370px;
-  background: url(/app/themes/map/assets/img/map-sm.png) no-repeat;
+  background: url(../img/map-sm.png) no-repeat;
+}
+.location {
+  list-style-type: none;
+  position: absolute;
+  display: inline-block;
+}
+.location:hover .quicklook {
+  display: inline-block;
+}
+.quicklook {
+  display: none;
+  z-index: 30;
+  position: absolute;
+  width: 380px;
+  bottom: 35px;
+  left: -50px;
+  background: #1d1b1c;
+  color: #ffffff;
+  padding: 10px;
+}
+.quicklook:after {
+  top: 100%;
+  left: 15%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: rgba(0, 0, 0, 0);
+  border-top-color: #000000;
+  border-width: 15px;
+  margin-left: -15px;
+}
+.quicklook p {
+  font-family: 'Open Sans', sans-serif;
+  color: #ffffff;
+  font-size: 12px;
+}
+.quicklook h2 {
+  font-size: 16px;
+  padding-bottom: 5px;
+}
+.quicklook h2 a,
+.quicklook h2 a:hover,
+.quicklook h2 a:active,
+.quicklook h2 a:visited {
+  color: #ffffff;
+}
+.quicklook .col-xs-7 {
+  padding-left: 10px;
+  padding-right: 0;
+}
+.quicklook .col-xs-5 {
+  padding-left: 0;
+  padding-right: 0;
+}
+.quicklook .thumb {
+  width: 100%;
+}
+.quicklook .button {
+  background: #ffffff;
+  color: #1d1b1c;
+  text-shadow: none;
+  padding: 2px 16px;
+  display: table;
+  font-weight: 500;
+  font-size: 14px;
+}
+.academic .pin,
+.academics .pin {
+  background: #5b3762;
+}
+.academic h2,
+.academics h2 {
+  border-bottom: 2px solid #5b3762;
+}
+.athletic .pin,
+.athletics .pin {
+  background: #60a9e7;
+}
+.athletic h2,
+.athletics h2 {
+  border-bottom: 2px solid #60a9e7;
+}
+.administrative .pin {
+  background: #efcb43;
+}
+.administrative h2 {
+  border-bottom: 2px solid #efcb43;
+}
+.dining .pin {
+  background: #e05838;
+}
+.dining h2 {
+  border-bottom: 2px solid #e05838;
+}
+.residential .pin {
+  background: #005596;
+}
+.residential h2 {
+  border-bottom: 2px solid #005596;
+}
+.student-life .pin {
+  background: #4ab838;
+}
+.student-life h2 {
+  border-bottom: 2px solid #4ab838;
+}
+.pin {
+  width: 16px;
+  height: 16px;
+  background: #000;
+  border-radius: 16px;
+  border: 2px solid #fff;
+  display: block;
 }
 /* ==========================================================================
    List View
@@ -6151,6 +6268,11 @@ h4 {
   left: 0;
   width: 400px;
   z-index: 1000;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 .list-view .list-view-inner {
   width: 100%;
@@ -6182,11 +6304,6 @@ h4 {
   padding: 0.5em 1em;
   font-size: 10px;
   text-transform: uppercase;
-}
-.list-view .list-view-categories .list-view-category {
-  width: 50%;
-  padding: 0 0.5em;
-  float: left;
 }
 .list-view .list-view-categories .list-view-category label {
   vertical-align: middle;
@@ -6270,7 +6387,7 @@ h4 {
 }
 .list-view .list-view-button {
   width: 120px;
-  background: #17212d;
+  background: #005596;
   border: 2px solid #ffffff;
   border-top: none;
   font-weight: normal;
@@ -6347,6 +6464,7 @@ a:hover {
    ========================================================================== */
 .navbar {
   margin: 0;
+  position: relative;
 }
 .navbar-default {
   background: #005596;
@@ -6371,6 +6489,42 @@ a:hover {
 .navbar-default .navbar-nav > li > a:focus {
   color: #ffffff;
   background: transparent;
+}
+.navbar-header,
+.navbar-collapse {
+  display: inline-block;
+  float: left;
+}
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+  border: 0px solid transparent;
+}
+#ctas {
+  display: inline-block;
+  float: right;
+  margin-top: 1em;
+}
+#ctas .button {
+  padding: 6px 24px;
+}
+.social {
+  displaY: inline-block;
+}
+.social a {
+  display: inline-block;
+  border-radius: 24px;
+  width: 24px;
+  height: 24px;
+  background: #fff;
+  text-align: center;
+  margin-right: 4px;
+}
+.social a:last-child {
+  margin-right: 10px;
+}
+.social .fa {
+  display: inline-block;
+  margin: 4px 0 0 4px;
 }
 /* ==========================================================================
    Location Content
@@ -6590,7 +6744,7 @@ aside .button {
   bottom: 0;
   width: 100%;
   font-family: 'Oswald', sans-serif;
-  padding: 25px 0;
+  padding: 15px 0;
   background: #1d1b1c;
   color: #ffffff;
 }
@@ -6600,6 +6754,13 @@ aside .button {
 }
 .content-info a:hover {
   text-decoration: underline;
+}
+.content-info .social {
+  float: right;
+}
+.content-info .social a,
+.content-info .social a:hover {
+  color: #1d1b1c;
 }
 /* ==========================================================================
    WordPress Generated Classes
@@ -6659,17 +6820,21 @@ figure.alignnone {
   #map.z1 {
     height: 1620px;
     width: 1777px;
-    background: url(/app/themes/map/assets/img/map-sm.png) no-repeat;
+    background: url(../img/map-sm.png) no-repeat;
   }
   #map.z2 {
     height: 2160px;
     width: 2370px;
-    background: url(/app/themes/map/assets/img/map-sm.png) no-repeat;
+    background: url(../img/map-sm.png) no-repeat;
   }
   #map.z3 {
-    height: 2752x;
+    height: 2752px;
     width: 2910px;
-    background: url(/app/themes/map/assets/img/map-sm.png) no-repeat;
+    background: url(../img/map-sm.png) no-repeat;
+  }
+  /* List View */
+  .list-view .list-view-categories {
+    font-size: 9px;
   }
 }
 @media (min-width: 768px) and (max-width: 1200px) {
@@ -6705,9 +6870,6 @@ figure.alignnone {
   }
   .list-view .list-view-button {
     left: 100%;
-  }
-  .list-view .list-view-categories .list-view-category {
-    width: 50%;
   }
   .list-view.closed {
     left: -50%;

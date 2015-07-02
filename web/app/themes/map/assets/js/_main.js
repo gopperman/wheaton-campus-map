@@ -74,6 +74,8 @@ var Roots = {
 			$list_view = $list_view_button.parent(),
 			$list_view_locations_wrap = $list_view.find( '.list-view-locations' ),
 			$list_view_locations = $list_view_locations_wrap.find( '.list-view-location' ),
+			$list_view_locations_categories = $list_view_locations.filter( '.list-view-location-category-name' ),
+			$list_view_no_results = $list_view_locations.filter( '.list-view-no-results'),
 			$list_view_filter_sections = $list_view.find( '.list-view-filter' ),
 			$list_view_filters = $list_view_filter_sections.find( 'input' );
 
@@ -151,14 +153,41 @@ var Roots = {
 					if ( $this.hasClass( category ) ) {
 						// Checked
 						if ( $self.prop( 'checked' ) ) {
-							$this.removeClass( 'hidden category-hidden' );
+							// If this item isn't hidden by search
+							if ( ! $this.hasClass( 'search-hidden' ) ) {
+								// Remove the hidden and category-hidden classes
+								$this.removeClass( 'hidden category-hidden' );
+							}
+							// Otherwise, if it is hidden by search
+							else {
+								// Remove the category-hidden class
+								$this.removeClass( 'category-hidden' );
+							}
 						}
 						// Unchecked
 						else {
-							$this.addClass( 'hidden category-hidden' );
+							// If this item isn't hidden by search
+							if ( ! $this.hasClass( 'search-hidden' ) ) {
+								// Add the hidden and category-hidden classes
+								$this.addClass( 'hidden category-hidden' );
+							}
+							// Otherwise, if it is hidden by search
+							else {
+								// Add the category-hidden class
+								$this.addClass( 'category-hidden' );
+							}
 						}
 					}
 				} );
+
+				// If no categories are visible, show no results
+				if ( ! $list_view_locations_categories.filter( ':visible' ).length ) {
+					$list_view_no_results.removeClass( 'hidden' );
+				}
+				// Otherwise if no results was hidden by category filters, hide no results
+				else {
+					$list_view_no_results.addClass( 'hidden' );
+				}
 			}
 		} );
 
@@ -168,7 +197,130 @@ var Roots = {
 
 			// Search
 			if ( $this.hasClass( 'list-view-filter-search' ) ) {
-				// TODO
+				var search_terms = $this.data( 'search-terms'),
+					search_value = $this.val(),
+					terms, match, matches = [], non_matches = [];
+
+				// Bail if the cached search term matches the current value
+				if ( search_terms === search_value ) {
+					return
+				}
+
+				// Store a reference to the search term in jQuery data
+				$this.data( 'search-terms', search_value );
+
+				// Update the search terms reference
+				search_terms = search_value;
+
+				// If we have terms
+				if ( search_terms.length > 0 ) {
+					// Escape the term string for RegExp meta characters (these would cause our regex logic to fail)
+					terms = search_terms.replace( /[-\/\\^$*+?.()|[\]{}]/g, '\\$&' );
+
+					// Each term is separated by a space, replace spaces with word delimiters
+					terms = terms.replace( / /g, ')(?=.*' );
+
+					// Create a new regex object/expression
+					match = new RegExp( '^(?=.*' + terms + ').+', 'i' );
+
+					// Loop through list locations
+					$list_view_locations.each( function() {
+						var $this = $( this ),
+							title = $this.data( 'title' );
+
+						// If we have a search term match (location title), skipping category name and no results items
+						if ( ! $this.hasClass( 'list-view-location-category-name' ) && ! $this.hasClass( 'list-view-no-results' ) && title && title.match( match ) ) {
+							// Add this location to the matches array
+							matches.push( $this );
+
+							// If this item isn't hidden by category
+							if ( ! $this.hasClass( 'category-hidden' ) ) {
+								// Remove the hidden and search-hidden classes
+								$this.removeClass( 'hidden search-hidden' );
+							}
+							// Otherwise, if it is hidden by category
+							else {
+								// Remove the search-hidden classes
+								$this.removeClass( 'search-hidden' );
+							}
+						}
+						// Otherwise if we don't have a search term match (location title), skipping category name and no results items
+						else if ( ! $this.hasClass( 'list-view-location-category-name' ) && ! $this.hasClass( 'list-view-no-results' ) ) {
+							// Add this location to the non-matches array
+							non_matches.push( $this );
+
+							// If this item isn't hidden by category
+							if ( ! $this.hasClass( 'category-hidden' ) ) {
+								// Add the hidden and search-hidden classes
+								$this.addClass( 'hidden search-hidden' );
+							}
+							// Otherwise, if it is hidden by category
+							else {
+								// Add the search-hidden classes
+								$this.addClass( 'search-hidden' );
+							}
+						}
+					} );
+
+					// If we don't have any matches
+					if ( ! matches.length ) {
+						// Hide the category name items
+						$list_view_locations_categories.addClass( 'hidden search-hidden' );
+
+						// Show the no results item
+						$list_view_no_results.removeClass( 'hidden' );
+					}
+					// Otherwise, if we have matches
+					else {
+						// Show the category name items
+						$list_view_locations_categories.removeClass( 'hidden search-hidden' );
+
+						// Hide the no results item
+						$list_view_no_results.addClass( 'hidden' );
+
+						// Loop through list view categories
+						$list_view_locations_categories.each( function () {
+							var $this = $( this ),
+								category = $this.data( 'category' );
+
+							// If the category name is the only element visible with the category CSS class, hide it now
+							if ( $list_view_locations.filter( '.' + category + ':visible' ).length === 1 ) {
+								$this.addClass( 'hidden search-hidden' );
+							}
+							// Otherwise show the element if it isn't hidden by a category
+							else if ( ! $this.hasClass( 'category-hidden' ) ) {
+								$this.removeClass( 'hidden search-hidden' );
+							}
+							// Otherwise just remove the search-hidden CSS class
+							else {
+								$this.removeClass( 'search-hidden' );
+							}
+						} );
+
+						// If by now we have nothing visible in the list view, show no results
+						if ( ! $list_view_locations.filter( ':visible' ).length ) {
+							// Show the no results item
+							$list_view_no_results.removeClass( 'hidden' );
+						}
+					}
+				}
+				// Otherwise show all locations that aren't hidden by categories
+				else {
+					// Loop through list locations
+					$list_view_locations.each( function() {
+						var $this = $( this );
+
+						// Ignore locations that are hidden via categories
+						if ( ! $this.hasClass( 'category-hidden' ) && $this.hasClass( 'search-hidden' ) ) {
+							// Show search hidden items
+							$this.removeClass( 'hidden search-hidden' );
+						}
+						else {
+							// Remove search-hidden class
+							$this.removeClass( 'search-hidden' );
+						}
+					} );
+				}
 			}
 		} );
    }

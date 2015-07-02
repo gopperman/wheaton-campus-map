@@ -1,3 +1,4 @@
+<?php if (is_front_page()) { ?>
 <footer class="content-info" role="contentinfo">
   <div class="container-fluid">
 		&copy; <?= date("Y") ?> <a href="//wheatoncollege.edu">Wheaton College</a>
@@ -10,3 +11,4 @@
 </footer>
 
 <?php wp_footer(); ?>
+<? } ?>

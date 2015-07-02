@@ -97,6 +97,7 @@
 						</div>
 						<div class="col-xs-7">
 							<h2><a href="<?= $location['permalink']; ?>"><?=$location['title']; ?></a></h2>
+							<p><?=wp_trim_words($location['description'],15); ?></p>
 							<a href="<?= $location['permalink'] ?>" class="button more">More</a>
 						</div>
 					</div>

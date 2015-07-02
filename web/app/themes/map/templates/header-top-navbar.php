@@ -1,4 +1,4 @@
-<?php if (is_front_page()) { ? ?>
+<?php if (is_front_page()) { ?>
 <header class="banner navbar navbar-default navbar-static-top" role="banner">
   <div class="container-fluid">
     <div class="navbar-header">

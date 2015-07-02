@@ -186,11 +186,25 @@ h4 {font-size: 13px;}
 	z-index: 30;
 	position: absolute;
 	width: 380px;
-	bottom: 20px;
-	left: 0;
+	bottom: 35px;
+	left: -50px;
 	background: @black;
 	color: @white;
 	padding: 10px;
+	&:after {
+		top: 100%;
+		left: 15%;
+		border: solid transparent;
+		content: " ";
+		height: 0;
+		width: 0;
+		position: absolute;
+		pointer-events: none;
+		border-color: rgba(0, 0, 0, 0);
+		border-top-color: #000000;
+		border-width: 15px;
+		margin-left: -15px;		
+	}
 	p {
 		.opensans;
 		color: @white;

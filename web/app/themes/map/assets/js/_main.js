@@ -54,7 +54,23 @@ var Roots = {
 					}
 				}
 			});
-
+      // Pin click handler
+			var locations = $('.location'); 
+      locations.click(function(e) {
+				if (!$(this).hasClass('active')) {
+					resetActiveLocations();
+					e.preventDefault();
+					e.stopPropagation();
+					$(this).addClass('active');	
+				}
+      });
+			$('#map').click(function(e) {
+				e.preventDefault();
+				resetActiveLocations();
+			});
+			function resetActiveLocations() {
+				locations.removeClass('active');
+			}
 		// Ekko Lightbox
 		$document.delegate( '*[data-toggle="lightbox"]', 'click', function( event ) {
 			// Prevent default

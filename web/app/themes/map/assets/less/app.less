@@ -186,8 +186,8 @@ h4 {font-size: 13px;}
 	z-index: 30;
 	position: absolute;
 	width: 380px;
-	bottom: 35px;
-	left: -50px;
+	bottom: 32px;
+	left: -49px;
 	background: @black;
 	color: @white;
 	padding: 10px;
@@ -201,9 +201,12 @@ h4 {font-size: 13px;}
 		position: absolute;
 		pointer-events: none;
 		border-color: rgba(0, 0, 0, 0);
-		border-top-color: #000000;
+		border-top-color: @black;
 		border-width: 15px;
 		margin-left: -15px;		
+	}
+	&.active {
+		display: inline-block !important;
 	}
 	p {
 		.opensans;

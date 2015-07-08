@@ -54,16 +54,16 @@ var Roots = {
 					}
 				}
 			});
-      // Pin click handler
-			var locations = $('.location'); 
-      locations.click(function(e) {
+			// Pin click handler
+			var locations = $('.location');
+      		locations.click(function(e) {
 				if (!$(this).hasClass('active')) {
 					resetActiveLocations();
 					e.preventDefault();
 					e.stopPropagation();
-					$(this).addClass('active');	
+					$(this).addClass('active');
 				}
-      });
+      		});
 			$('#map').click(function(e) {
 				e.preventDefault();
 				resetActiveLocations();
@@ -71,16 +71,26 @@ var Roots = {
 			function resetActiveLocations() {
 				locations.removeClass('active');
 			}
+
+
 		// Ekko Lightbox
 		$document.delegate( '*[data-toggle="lightbox"]', 'click', function( event ) {
+			var $this = jQuery( this );
 			// Prevent default
 			event.preventDefault();
 
-			// Add Lightbox
-			jQuery( this ).ekkoLightbox( {
+			var opts = {
 				left_arrow_class: '.glyphicon .glyphicon-menu-left',
 				right_arrow_class: '.glyphicon .glyphicon-menu-right'
-			} );
+			};
+
+			// Disable external link checking
+			if ( $this.data( 'disableexternalcheck' ) ) {
+				$this.data( 'disableExternalCheck', true );
+			}
+
+			// Add Lightbox
+			jQuery( this ).ekkoLightbox( opts );
 		} );
 
 		/*

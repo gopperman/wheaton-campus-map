@@ -96,9 +96,9 @@
 							<img src="<?=$location['thumbnail']; ?>" alt="<?=$location['title']; ?>" class="thumb" />
 						</div>
 						<div class="col-xs-7">
-							<h2><a href="<?= $location['permalink']; ?>"><?=$location['title']; ?></a></h2>
+							<h2><a href="<?= $location['permalink']; ?>" data-toggle="lightbox" data-remote="<?= $location['permalink'] ?>" data-disableexternalcheck="true"><?=$location['title']; ?></a></h2>
 							<p><?=wp_trim_words($location['description'],15); ?></p>
-							<a href="<?= $location['permalink'] ?>" class="button more">More</a>
+							<a href="<?= $location['permalink'] ?>" class="button more" data-toggle="lightbox" data-remote="<?= $location['permalink'] ?>" data-disableexternalcheck="true">More</a>
 						</div>
 					</div>
 					<a href="#" class="pin"></a>

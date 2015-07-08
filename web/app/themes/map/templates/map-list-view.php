@@ -21,7 +21,7 @@ global $map_locations, $map_categories, $map_locations_categories, $map_categori
 				if ( ! empty ( $map_categories ) ) :
 					foreach ( $map_categories as $map_category ) :
 			?>
-					<div class="list-view-category <?php echo esc_attr( $map_category->slug ); ?>">
+					<div class="list-view-category <?php echo esc_attr( $map_category->slug ); ?> col-xs-6 col-md-4">
 						<input type="checkbox" id="list-view-category-<?php echo esc_attr( $map_category->slug ); ?>" class="list-view-filter-category" name="list-view-category-<?php echo esc_attr( $map_category->slug ); ?>" value="<?php echo esc_attr( $map_category->slug ); ?>" checked="checked" />
 						<label for="list-view-category-<?php echo esc_attr( $map_category->slug ); ?>"><?php echo $map_category->name; ?></label>
 					</div>
@@ -41,7 +41,7 @@ global $map_locations, $map_categories, $map_locations_categories, $map_categori
 							// Grab the location category object
 							$location_category = $map_categories_term_ids[$location_category_id];
 						?>
-							<li class="list-view-location <?php echo esc_attr( $location_category->slug ); ?> list-view-location-category-name list-view-location-category-name-<?php echo esc_attr( $location_category->slug ); ?> cf"><?php echo $location_category->name; ?></li>
+							<li class="list-view-location <?php echo esc_attr( $location_category->slug ); ?> list-view-location-category-name list-view-location-category-name-<?php echo esc_attr( $location_category->slug ); ?> cf" data-category="<?php echo esc_attr( $location_category->slug ); ?>"><?php echo $location_category->name; ?> Buildings</li>
 						<?php
 							// Setting each post to global $post so 'the_' functions work properly
 							foreach ( $location_category_posts as $post ) :
@@ -51,13 +51,11 @@ global $map_locations, $map_categories, $map_locations_categories, $map_categori
 								// CSS classes
 								$css_classes = array();
 
-								// Loop through categories for this location
-								if ( ! empty( $location_categories ) )
-									foreach ( $location_categories as $location_category ) {
-										// Add the location category slug to CSS classes
-										$css_classes[] = $location_category->slug;
-										$css_classes[] = 'list-view-category-' . $location_category->slug;
-									}
+								// Add the location category (first category only)
+								if ( ! empty( $location_categories ) ) {
+									$css_classes[] = $location_categories[0]->slug;
+									$css_classes[] = 'list-view-category-' . $location_categories[0]->slug;
+								}
 
 								// Sanitize CSS classes
 								$css_classes = array_filter( $css_classes, 'sanitize_html_class' );
@@ -72,7 +70,7 @@ global $map_locations, $map_categories, $map_locations_categories, $map_categori
 								$description = apply_filters( 'the_content', $description );
 								$description = str_replace( ']]>', ']]&gt;', $description );
 							?>
-								<li class="list-view-location <?php echo esc_attr( $css_classes ); ?> cf" data-title="<?php esc_attr( get_the_title() ); ?>" data-description="<?php echo esc_attr( $raw_description ); ?>">
+								<li class="list-view-location <?php echo esc_attr( $css_classes ); ?> cf" data-title="<?php echo esc_attr( get_the_title() ); ?>" data-description="<?php echo esc_attr( $raw_description ); ?>">
 									<a href="<?php the_permalink(); ?>" class="list-view-location-link">
 										<?php if ( has_post_thumbnail() ) : ?>
 											<div class="list-view-location-image">
@@ -106,7 +104,9 @@ global $map_locations, $map_categories, $map_locations_categories, $map_categori
 							endforeach;
 						endif;
 					endforeach;
-
+				?>
+					<li class="list-view-location list-view-no-results cf hidden">No Results Found</li>
+				<?php
 					// Reset global $post data
 					wp_reset_postdata();
 				else: // No Posts
@@ -116,6 +116,6 @@ global $map_locations, $map_categories, $map_locations_categories, $map_categori
 		</ul>
 	</div>
 
-	<a href="#" class="button list-view-button" data-close-label="Close" data-open-label="<span class=&quot;glyphicon glyphicon-list&quot;></span> List View"><span class="glyphicon glyphicon-list"></span> List View</a>
+	<a href="#" class="button list-view-button" data-close-label="<span class=&quot;glyphicon glyphicon-list&quot;></span> Close" data-open-label="<span class=&quot;glyphicon glyphicon-list&quot;></span> List View"><span class="glyphicon glyphicon-list"></span> List View</a>
 </div>
 

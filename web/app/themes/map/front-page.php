@@ -88,6 +88,10 @@
 ?>
 <div id="viewport">
 	<div id="map" class="z1">
+		<div id="map_controls">
+			<a href="#" class="zoomin">+</a>
+			<a href="#" class="zoomout">-</a>
+		</div>
 		<ul id="map_locations">
 			<? foreach($locations as $location) { ?>
 				<li class="location <?= $location['categories'][0]->slug; ?>" style='left:<?= $location['x_coord']; ?>%;top:<?= $location['y_coord']; ?>%;'>

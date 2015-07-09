@@ -23,10 +23,9 @@ var Roots = {
   common: {
     init: function() {
       // JavaScript to be fired on all pages
-		var $document = $( document ),
+			var $document = $( document ),
 			$body = $( 'body' );
 
-			console.log('ok');
 			//Asynchronously load external CSS - Font Awesome
 			var fa = document.createElement('link');
 			fa.href = 'http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css';
@@ -54,23 +53,58 @@ var Roots = {
 					}
 				}
 			});
-      // Pin click handler
-			var locations = $('.location'); 
-      locations.click(function(e) {
-				if (!$(this).hasClass('active')) {
-					resetActiveLocations();
-					e.preventDefault();
-					e.stopPropagation();
-					$(this).addClass('active');	
+      //Map Control Singleton
+			function Map() {
+				this.locations = $('.location');
+				this.map = $('#map');
+				this.resetActiveLocations = function() {
+					this.locations.removeClass('active');
 				}
-      });
-			$('#map').click(function(e) {
-				e.preventDefault();
-				resetActiveLocations();
-			});
-			function resetActiveLocations() {
-				locations.removeClass('active');
+				this.zoomOut = function() {
+					if (!this.map.hasClass('z1')) {
+						if (this.map.hasClass('z2')) {
+							this.map.removeClass('z2');
+							this.map.addClass('z1');
+						} else {
+							this.map.removeClass('z3');
+							this.map.addClass('z2');
+						}
+					}
+				};
+				this.zoomIn = function() {
+					if (!this.map.hasClass('z3')) {
+						if (this.map.hasClass('z2')) {
+							this.map.removeClass('z2');
+							this.map.addClass('z3');
+						} else {
+							this.map.removeClass('z1');
+							this.map.addClass('z2');
+						}
+					}
+				};
+				// Bind Actions
+	      this.locations.click(function(e) {
+					if (!$(this).hasClass('active')) {
+						map.resetActiveLocations();
+						e.preventDefault();
+						e.stopPropagation();
+						$(this).addClass('active');	
+					}
+      	});
+				$('#map').click(function(e) {
+					e.preventDefault();
+					map.resetActiveLocations();
+				});
+				$('.zoomin').click(function(e) {
+					e.preventDefault();
+					map.zoomIn();
+				});
+				$('.zoomout').click(function(e) {
+					e.preventDefault();
+					map.zoomOut();
+				});
 			}
+			var map = map || new Map();
 		// Ekko Lightbox
 		$document.delegate( '*[data-toggle="lightbox"]', 'click', function( event ) {
 			// Prevent default

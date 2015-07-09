@@ -161,6 +161,9 @@ h4 {font-size: 13px;}
 		height: 1080px;
 		width: 1185px;
 		background: url(/app/themes/map/assets/img/map-sm.png) no-repeat;
+		.zoomout {
+			background: darken(@white, 10%);
+		}
 	}
 	&.z2 {
 		height: 1620px;
@@ -171,6 +174,35 @@ h4 {font-size: 13px;}
 		height: 2160px;
 		width: 2370px;
 		background: url(/app/themes/map/assets/img/map-sm.png) no-repeat;
+		.zoomout {
+			background: darken(@white, 10%);
+		}
+	}
+}
+#map_controls {
+	position: fixed;
+	top: 80px;
+	right: 40px;
+	z-index: 99;
+	border: 1px solid darken(@white, 10%);
+	border-radius: 3px;
+	a, a:active, a:visited {
+		width: 30px;
+		height: 30px;
+		font-size: 1.8em;
+		line-height: 25px;
+		font-weight: bold;
+		text-align: center;
+		display: block;
+		background: @white;
+		color: @gray-light;
+		transition: all, .2s;
+		&:first-child {
+			border-bottom: 1px solid darken(@white, 10%);
+		}
+		&:hover, &:active, &:focus {
+			text-decoration: none;
+		}
 	}
 }
 .location {

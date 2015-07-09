@@ -810,14 +810,14 @@ aside .button {
 
 	.modal-header {
 		border-bottom: none;
-	}
 
-	.modal-header .close {
-		color: @white;
-		font-size: 2.5em;
-		font-weight: normal;
-		opacity: .8;
-		outline: none;
+		.close {
+			color: @white;
+			font-size: 2.5em;
+			font-weight: normal;
+			opacity: .8;
+			outline: none;
+		}
 	}
 
 	.modal-body {
@@ -844,6 +844,81 @@ aside .button {
 		right: -8%;
 		float: right;
 		text-align: right;
+	}
+}
+
+.home .ekko-lightbox {
+	background: rgba(24, 24, 24, 0.85);
+
+	.modal-loading {
+		padding: 20px;
+	}
+}
+
+.home .ekko-lightbox.location-lightbox {
+	.modal-dialog {
+		margin: 0;
+		max-width: 100% !important;
+
+		.modal-header, .modal-footer {
+			.close {
+				color: @white;
+				border: none;
+				border-radius: 2px;
+				background: @green;
+				background: -moz-linear-gradient(top,@green 0%, @green_end 100%); /* FF3.6+ */
+				background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,@green), color-stop(100%,@green_end)); /* Chrome,Safari4+ */
+				background: -webkit-linear-gradient(top,@green 0%,@green_end 100%); /* Chrome10+,Safari5.1+ */
+				background: -o-linear-gradient(top,@green 0%,@green_end 100%); /* Opera 11.10+ */
+				background: -ms-linear-gradient(top,@green 0%,@green_end 100%); /* IE10+ */
+				background: linear-gradient(to bottom,@green 0%,@green_end 100%); /* W3C */
+				transition: all, .2s;
+				.oswald;
+				font-size: 14px;
+				font-weight: bold;
+				text-transform: uppercase;
+				padding: 12px 16px;
+				text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+				box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.4);
+				opacity: 1;
+				float: none;
+				&:hover {
+					color: @white;
+					text-decoration: none;
+					background: @green_hover; /* Old browsers */
+					background: -moz-linear-gradient(top,@green_hover 0%, @green_hover_end 100%); /* FF3.6+ */
+					background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,@green_hover), color-stop(100%,@green_hover_end)); /* Chrome,Safari4+ */
+					background: -webkit-linear-gradient(top,@green_hover 0%,@green_hover_end 100%); /* Chrome10+,Safari5.1+ */
+					background: -o-linear-gradient(top,@green_hover 0%,@green_hover_end 100%); /* Opera 11.10+ */
+					background: -ms-linear-gradient(top,@green_hover 0%,@green_hover_end 100%); /* IE10+ */
+					background: linear-gradient(to bottom,@green_hover 0%,@green_hover_end 100%); /* W3C */
+					text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+					box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.4);
+				}
+			}
+		}
+
+		.modal-header-wheaton {
+			background: @wheaton;
+		}
+
+		.modal-content {
+			max-width: 100%;
+			background: @white;
+			border-radius: 0;
+
+			.modal-body {
+				padding: 0;
+
+				.location {
+					position: relative;
+				}
+			}
+		}
+
+		.modal-footer-wheaton {
+			padding-top: 20px;
+		}
 	}
 }
 

@@ -41,7 +41,7 @@ var Roots = {
 			document.getElementsByTagName('head')[0].appendChild(gf);
 
 			//Smooth Scrolling
-			$('a[href*=#]:not([href=#])').click(function() {
+			$document.delegate( 'a[href*=#]:not([href=#])', 'click', function() {
 				if (location.pathname.replace(/^\//,'') === this.pathname.replace(/^\//,'') && location.hostname === this.hostname) {
 					var target = $(this.hash);
 					target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
@@ -49,6 +49,9 @@ var Roots = {
 						$('html,body').animate({
 							scrollTop: target.offset().top
 						}, 600);
+						$( '.ekko-lightbox' ).animate({
+							scrollTop: target.position().top
+						}, 600 );
 						return false;
 					}
 				}
@@ -115,21 +118,41 @@ var Roots = {
 			map.center();
 		// Ekko Lightbox
 		$document.delegate( '*[data-toggle="lightbox"]', 'click', function( event ) {
+			var $this = jQuery( this ), $ekko_lightbox, $ekko_lightbox_header, $ekko_lightbox_footer;
 			// Prevent default
 			event.preventDefault();
 
 			// Add Lightbox
-			jQuery( this ).ekkoLightbox( {
+			$this.ekkoLightbox( {
 				left_arrow_class: '.glyphicon .glyphicon-menu-left',
 				right_arrow_class: '.glyphicon .glyphicon-menu-right'
 			} );
+
+			// Location Lightbox Links
+			if ( $this.hasClass( 'location-lightbox' ) ) {
+				$ekko_lightbox = $( '.ekko-lightbox' );
+				$ekko_lightbox_header = $ekko_lightbox.find( '.modal-header' );
+				$ekko_lightbox_footer = $ekko_lightbox.find( '.modal-footer' );
+
+				// Add location-lightbox CSS class to modal wrapper
+				$ekko_lightbox.addClass( 'location-lightbox' );
+
+				// Adjust the modal header content
+				$ekko_lightbox_header.addClass( 'modal-header-wheaton' ); // Add modal-header-wheaton CSS class to modal header
+				$ekko_lightbox_header.find( 'button' ).addClass( 'button' ).html( 'Back' ); // Adjust close button label and CSS class
+				$ekko_lightbox_header.find( '.modal-title' ).remove(); // Remove title element
+
+				// Adjust the modal footer content
+				$ekko_lightbox_footer.addClass( 'modal-footer-wheaton' ).show().html( '' ); // Add modal-footer-wheaton CSS class to modal header, show footer, and remove all content
+				$ekko_lightbox_header.find( 'button' ).clone().appendTo( $ekko_lightbox_footer ); // Add the back button
+			}
 		} );
 
 		/*
 		 * Map - List View
 		 */
-		var $list_view_button = $( '.list-view-button' ),
-			$list_view = $list_view_button.parent(),
+		var $list_view_buttons = $( '.list-view-button' ),
+			$list_view = $( '#list-view' ),
 			$list_view_locations_wrap = $list_view.find( '.list-view-locations' ),
 			$list_view_locations = $list_view_locations_wrap.find( '.list-view-location' ),
 			$list_view_locations_categories = $list_view_locations.filter( '.list-view-location-category-name' ),
@@ -138,7 +161,9 @@ var Roots = {
 			$list_view_filters = $list_view_filter_sections.find( 'input' );
 
 		// List View button click
-		$list_view_button.on( 'touch click', function( event ) {
+		$list_view_buttons.on( 'touch click', function( event ) {
+			var $this = $( this );
+
 			// Prevent default
 			event.preventDefault();
 
@@ -151,7 +176,7 @@ var Roots = {
 				$list_view.removeClass( 'closed' );
 
 				// Change the label of the list view button
-				$list_view_button.html( $list_view_button.data( 'close-label' ) );
+				$this.html( $this.data( 'close-label' ) );
 
 				// Adjust the body class
 				$body.addClass( 'list-view-open' );
@@ -162,7 +187,7 @@ var Roots = {
 				$list_view.addClass( 'closed' );
 
 				// Change the label of the list view button
-				$list_view_button.html( $list_view_button.data( 'open-label' ) );
+				$this.html( $this.data( 'open-label' ) );
 
 				// Adjust the body class
 				$body.removeClass( 'list-view-open' );
@@ -175,7 +200,10 @@ var Roots = {
 			$list_view.addClass( 'closed' );
 
 			// Change the label of the list view button
-			$list_view_button.html( $list_view_button.data( 'open-label' ) );
+			$list_view_buttons.each( function ( ) {
+				var $this = $( this );
+				$this.html( $this.data( 'open-label' ) );
+			} );
 
 			// Adjust the body class
 			$body.removeClass( 'list-view-open' );

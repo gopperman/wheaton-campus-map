@@ -11,37 +11,43 @@
  * 3. /theme/assets/js/main.min.js (in footer)
  */
 function roots_scripts() {
-  // Ekko Lightbox
-  wp_enqueue_style( 'ekko-lightbox', get_template_directory_uri() . '/assets/css/ekko-lightbox.min.css', false, '3588fc478065a358a87c8e64f799837d' );
+	// Ensure these scripts/styles aren't loaded when viewing content in a "lightbox"
+	if ( ! ( $lightbox = get_query_var( 'lightbox' ) ) || $lightbox !== true ) {
+		// Ekko Lightbox
+		wp_enqueue_style( 'ekko-lightbox', get_template_directory_uri() . '/assets/css/ekko-lightbox.min.css', false, '3588fc478065a358a87c8e64f799837d' );
 
-  wp_enqueue_style('roots_main', get_template_directory_uri() . '/assets/css/main.min.css', array( 'ekko-lightbox' ), '87565126522a4e59c14efa5b619201b2');
+		wp_enqueue_style( 'roots_main', get_template_directory_uri() . '/assets/css/main.min.css', array( 'ekko-lightbox' ), 'd27a504f0bad724810396492b23e1ffb' );
 
-  // jQuery is loaded using the same method from HTML5 Boilerplate:
-  // Grab Google CDN's latest jQuery with a protocol relative URL; fallback to local if offline
-  // It's kept in the header instead of footer to avoid conflicts with plugins.
-  if (!is_admin() && current_theme_supports('jquery-cdn')) {
-    wp_deregister_script('jquery');
-    wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js', array(), null, false);
-    add_filter('script_loader_src', 'roots_jquery_local_fallback', 10, 2);
-  }
+		// jQuery is loaded using the same method from HTML5 Boilerplate:
+		// Grab Google CDN's latest jQuery with a protocol relative URL; fallback to local if offline
+		// It's kept in the header instead of footer to avoid conflicts with plugins.
+		if ( ! is_admin() && current_theme_supports( 'jquery-cdn' ) ) {
+			wp_deregister_script( 'jquery' );
+			wp_register_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js', array(), null, false );
+			add_filter( 'script_loader_src', 'roots_jquery_local_fallback', 10, 2 );
+		}
 
-  if (is_single() && comments_open() && get_option('thread_comments')) {
-    wp_enqueue_script('comment-reply');
-  }
+		if ( is_single() && comments_open() && get_option( 'thread_comments' ) ) {
+			wp_enqueue_script( 'comment-reply' );
+		}
 
-  wp_register_script('modernizr', get_template_directory_uri() . '/assets/js/vendor/modernizr-2.7.0.min.js', array(), null, false);
-  wp_register_script('roots_scripts', get_template_directory_uri() . '/assets/js/scripts.min.js', array(), 'cc7db4af494ba4aa747b930f6f6673d5', true);
-  wp_enqueue_script('modernizr');
-  wp_enqueue_script('jquery');
-  wp_enqueue_script('roots_scripts');
+		wp_register_script( 'modernizr', get_template_directory_uri() . '/assets/js/vendor/modernizr-2.7.0.min.js', array(), null, false );
+		wp_register_script( 'roots_scripts', get_template_directory_uri() . '/assets/js/scripts.min.js', array(), '5a86a2fe3e208683c0ac472455694ae7', true );
+		wp_enqueue_script( 'modernizr' );
+		wp_enqueue_script( 'jquery' );
+		wp_enqueue_script( 'roots_scripts' );
 
-  // Ekko Lightbox
-  wp_enqueue_script( 'ekko-lightbox', get_template_directory_uri() . '/assets/js/vendor/ekko-lightbox.min.js', array( 'jquery', 'roots_scripts' ), 'ae4766c66f2e7e0dee39525411a89b03', true );
-  // Picturefill Polyfill
-  wp_enqueue_script( 'picturefill', get_template_directory_uri() . '/assets/js/vendor/picturefill.min.js', false, 'ae4766c66f2e7e0dee39525411a89b03' );
+		// Ekko Lightbox
+		wp_enqueue_script( 'ekko-lightbox', get_template_directory_uri() . '/assets/js/vendor/ekko-lightbox.min.js', array(
+			'jquery',
+			'roots_scripts'
+		), 'ae4766c66f2e7e0dee39525411a89b03', true );
+		// Picturefill Polyfill
+		wp_enqueue_script( 'picturefill', get_template_directory_uri() . '/assets/js/vendor/picturefill.min.js', false, 'ae4766c66f2e7e0dee39525411a89b03' );
 
-  // Lazysizes Lazy load images)
-  wp_enqueue_script( 'lazysizes', get_template_directory_uri() . '/assets/js/vendor/lazysizes.min.js', false, 'ae4766c66f2e7e0dee39525411a89b03' );
+		// Lazysizes Lazy load images)
+		wp_enqueue_script( 'lazysizes', get_template_directory_uri() . '/assets/js/vendor/lazysizes.min.js', false, 'ae4766c66f2e7e0dee39525411a89b03' );
+	}
 }
 add_action('wp_enqueue_scripts', 'roots_scripts', 100);
 

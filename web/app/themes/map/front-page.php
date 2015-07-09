@@ -95,7 +95,7 @@
 		<ul id="map_locations">
 			<? foreach($locations as $location) { ?>
 				<li class="location <?= $location['categories'][0]->slug; ?>" style='left:<?= $location['x_coord']; ?>%;top:<?= $location['y_coord']; ?>%;'>
-					<div class="quicklook">
+					<div class="quicklook<?=($location['x_coord']>72) ? ' right' : '' ?>">
 						<div class="col-xs-5">
 							<img src="<?=$location['thumbnail']; ?>" alt="<?=$location['title']; ?>" class="thumb" />
 						</div>

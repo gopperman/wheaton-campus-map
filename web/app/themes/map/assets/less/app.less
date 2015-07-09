@@ -179,6 +179,12 @@ h4 {font-size: 13px;}
 		}
 	}
 }
+#map_locations {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
 #map_controls {
 	position: fixed;
 	top: 80px;
@@ -230,6 +236,13 @@ h4 {font-size: 13px;}
 	color: @white;
 	padding: 10px;
 	transition: 0.001s all 0.15s; /* 0.001s to ensure Grunt doesn't remove the "s" */
+	&.right {
+			left: -300px;
+			&:after {
+				right: 15%;
+				left: auto;
+			}
+	}
 	&:after {
 		top: 100%;
 		left: 15%;

@@ -82,6 +82,12 @@ var Roots = {
 						}
 					}
 				};
+				this.center = function() {
+					$('#viewport').animate({
+						scrollTop: (this.map.height() / 2) - (window.innerHeight / 2),
+						scrollLeft: (this.map.width() / 2) - (window.innerWidth / 2)
+					}, 0);
+				}
 				// Bind Actions
 	      this.locations.click(function(e) {
 					if (!$(this).hasClass('active')) {
@@ -105,6 +111,7 @@ var Roots = {
 				});
 			}
 			var map = map || new Map();
+			map.center();
 		// Ekko Lightbox
 		$document.delegate( '*[data-toggle="lightbox"]', 'click', function( event ) {
 			// Prevent default

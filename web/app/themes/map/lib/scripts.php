@@ -30,19 +30,18 @@ function roots_scripts() {
   }
 
   wp_register_script('modernizr', get_template_directory_uri() . '/assets/js/vendor/modernizr-2.7.0.min.js', array(), null, false);
-  wp_register_script('roots_scripts', get_template_directory_uri() . '/assets/js/scripts.min.js', array(), 'b9dc7c50062a462c2ab243328e2c6415', true);
+  wp_register_script('roots_scripts', get_template_directory_uri() . '/assets/js/scripts.min.js', array(), 'cc7db4af494ba4aa747b930f6f6673d5', true);
   wp_enqueue_script('modernizr');
   wp_enqueue_script('jquery');
   wp_enqueue_script('roots_scripts');
 
   // Ekko Lightbox
-  wp_enqueue_script( 'ekko-lightbox', get_template_directory_uri() . '/assets/js/ekko-lightbox.min.js', array( 'jquery', 'roots_scripts' ), 'ae4766c66f2e7e0dee39525411a89b03', true );
-
+  wp_enqueue_script( 'ekko-lightbox', get_template_directory_uri() . '/assets/js/vendor/ekko-lightbox.min.js', array( 'jquery', 'roots_scripts' ), 'ae4766c66f2e7e0dee39525411a89b03', true );
   // Picturefill Polyfill
-  wp_enqueue_script( 'picturefill', get_template_directory_uri() . '/assets/js/picturefill.min.js', false, 'ae4766c66f2e7e0dee39525411a89b03' );
+  wp_enqueue_script( 'picturefill', get_template_directory_uri() . '/assets/js/vendor/picturefill.min.js', false, 'ae4766c66f2e7e0dee39525411a89b03' );
 
   // Lazysizes Lazy load images)
-  wp_enqueue_script( 'lazysizes', get_template_directory_uri() . '/assets/js/lazysizes.min.js', false, 'ae4766c66f2e7e0dee39525411a89b03' );
+  wp_enqueue_script( 'lazysizes', get_template_directory_uri() . '/assets/js/vendor/lazysizes.min.js', false, 'ae4766c66f2e7e0dee39525411a89b03' );
 }
 add_action('wp_enqueue_scripts', 'roots_scripts', 100);
 

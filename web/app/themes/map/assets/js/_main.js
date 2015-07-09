@@ -112,16 +112,25 @@ var Roots = {
 			}
 			var map = map || new Map();
 			map.center();
+
 		// Ekko Lightbox
 		$document.delegate( '*[data-toggle="lightbox"]', 'click', function( event ) {
+			var $this = jQuery( this );
 			// Prevent default
 			event.preventDefault();
 
-			// Add Lightbox
-			jQuery( this ).ekkoLightbox( {
+			var opts = {
 				left_arrow_class: '.glyphicon .glyphicon-menu-left',
 				right_arrow_class: '.glyphicon .glyphicon-menu-right'
-			} );
+			};
+
+			// Disable external link checking
+			if ( $this.data( 'disableexternalcheck' ) ) {
+				$this.data( 'disableExternalCheck', true );
+			}
+
+			// Add Lightbox
+			jQuery( this ).ekkoLightbox( opts );
 		} );
 
 		/*

@@ -1,6 +1,6 @@
 <?php
 /**
- * This template is used to display the List View for the map.
+ * This template is used to display the List for the map.
  */
 
 global $map_locations, $map_categories, $map_locations_categories, $map_categories_term_ids; // Populated in front-page.php
@@ -116,6 +116,6 @@ global $map_locations, $map_categories, $map_locations_categories, $map_categori
 		</ul>
 	</div>
 
-	<a href="#" class="button list-view-button" data-close-label="<span class=&quot;glyphicon glyphicon-list&quot;></span> Close" data-open-label="<span class=&quot;glyphicon glyphicon-list&quot;></span> List View"><span class="glyphicon glyphicon-list"></span> List View</a>
+	<a href="#" class="button list-view-button" data-close-label="<span class=&quot;glyphicon glyphicon-list&quot;></span> Close" data-open-label="<span class=&quot;glyphicon glyphicon-list&quot;></span> List"><span class="glyphicon glyphicon-list"></span> List</a>
 </div>
 

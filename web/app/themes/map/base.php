@@ -1,7 +1,7 @@
 <?php if (array_key_exists('json', $_GET)) {
 	get_template_part('templates/json');
 } else { 
-	get_template_part('templates/head'); ?>
+	if (!array_key_exists('lightbox', $_GET)) get_template_part('templates/head'); ?>
 	<body <?php body_class(); ?>>
 
   	<!--[if lt IE 8]>

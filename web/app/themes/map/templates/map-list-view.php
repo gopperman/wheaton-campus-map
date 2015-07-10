@@ -71,7 +71,7 @@ global $map_locations, $map_categories, $map_locations_categories, $map_categori
 								$description = str_replace( ']]>', ']]&gt;', $description );
 							?>
 								<li class="list-view-location <?php echo esc_attr( $css_classes ); ?> cf" data-title="<?php echo esc_attr( get_the_title() ); ?>" data-description="<?php echo esc_attr( $raw_description ); ?>">
-									<a href="<?php the_permalink(); ?>" class="list-view-location-link">
+									<a href="<?= get_the_permalink().'?lightbox'; ?>" class="list-view-location-link location-lightbox" data-toggle="lightbox">
 										<?php if ( has_post_thumbnail() ) : ?>
 											<div class="list-view-location-image">
 												<?php the_post_thumbnail( 'thumbnail' ); ?>

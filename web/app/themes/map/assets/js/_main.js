@@ -97,8 +97,8 @@ var Roots = {
 					if (!$(this).hasClass('active')) {
 						map.resetActiveLocations();
 						e.preventDefault();
-						e.stopPropagation();
 						$(this).addClass('active');
+						if (!$(e.toElement).hasClass('location-lightbox')) {e.stopPropagation();}
 					}
 				});
 				$('#map').click(function(e) {

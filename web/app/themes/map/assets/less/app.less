@@ -158,22 +158,22 @@ h4 {font-size: 13px;}
 	min-height: 100vh;
 	margin-bottom: 50px;
 	&.z1 {
-		height: 1080px;
-		width: 1185px;
-		background: url(../img/map-sm.png) no-repeat;
+		width: 1000px;
+		height: 850px;
+		background: url(../img/map-1000x850.png) no-repeat;
 		.zoomout {
 			background: darken(@white, 10%);
 		}
 	}
 	&.z2 {
-		height: 1620px;
-		width: 1777px;
-		background: url(../img/map-sm.png) no-repeat;
+		width: 1500px;
+		height: 1275px;
+		background: url(../img/map-1500x1275.png) no-repeat;
 	}
 	&.z3 {
-		height: 2160px;
-		width: 2370px;
-		background: url(../img/map-sm.png) no-repeat;
+		width: 2000x;
+		height: 1700px;
+		background: url(../img/map-2000x1700.png) no-repeat;
 		.zoomin {
 			background: darken(@white, 10%);
 		}
@@ -1071,19 +1071,19 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
 	#map {
 		background-size: 100% auto !important;
 		&.z1 {
-			height: 1620px;
-			width: 1777px;
-			background: url(../img/map-sm.png) no-repeat;
+			width: 1500px;
+			height: 1275px;
+			background: url(../img/map-1500x1275.png) no-repeat;
 		}
 		&.z2 {
-			height: 2160px;
-			width: 2370px;
-			background: url(../img/map-sm.png) no-repeat;
+			width: 2000px;
+			height: 1700px;
+			background: url(../img/map-2000x1700.png) no-repeat;
 		}
 		&.z3 {
-			height: 2752px;
-			width: 2910px;
-			background: url(../img/map-sm.png) no-repeat;
+			width: 2500px;
+			height: 2125px;
+			background: url(../img/map-2500x2125.png) no-repeat;
 		}
 	}
 
@@ -1096,7 +1096,26 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
 	}
 }
 
-@media (min-width: @screen-lg-min) { }
+@media (min-width: @screen-lg-min) { 
+	#map {
+		background-size: 100% auto !important;
+		&.z1 {
+			width: 2000px;
+			height: 1700px;
+			background: url(../img/map-2000x1700.png) no-repeat;
+		}
+		&.z2 {
+			width: 2500px;
+			height: 2125px;
+			background: url(../img/map-2500x2125.png) no-repeat;
+		}
+		&.z3 {
+			width: 3000px;
+			height: 2550px;
+			background: url(../img/map-3000x2550.png) no-repeat;
+		}
+	}
+}
 
 
 @media (min-width: @screen-sm-min) and (max-width: @screen-lg-min) {

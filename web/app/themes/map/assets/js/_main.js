@@ -116,6 +116,10 @@ var Roots = {
 			}
 			var map = map || new Map();
 			map.center();
+
+		// Map Panning
+		$('#viewport').kinetic('attach', {cursor : 'pointer'});
+
 		// Ekko Lightbox
 		$document.delegate( '*[data-toggle="lightbox"]', 'click', function( event ) {
 			var $this = jQuery( this ), $ekko_lightbox, $ekko_lightbox_header, $ekko_lightbox_footer;

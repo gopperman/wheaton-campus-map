@@ -52,7 +52,7 @@
 				<?php endif; ?>
    	 	</main>
 			<aside class="col-sm-3">
-				<a href="//wheatoncollege.edu/admission" target="_blank" class="button">Schedule Your Campus Tour</a>
+				<a href="//wheatoncollege.edu/admission" target="_blank" class="button">Visit Campus</a>
 				<div class="factbox">
 					<?php if( have_rows('quick_facts') ): ?>
 						<h3 class="section-title">Building Features</h3>

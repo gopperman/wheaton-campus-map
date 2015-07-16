@@ -93,7 +93,7 @@ var Roots = {
 					}, 0);
 				};
 				// Bind Actions
-				this.locations.click(function(e) {
+				this.locations.on('click', function(e) {
 					if (!$(this).hasClass('active')) {
 						map.resetActiveLocations();
 						e.preventDefault();
@@ -105,11 +105,11 @@ var Roots = {
 					e.preventDefault();
 					map.resetActiveLocations();
 				});
-				$('.zoomin').click(function(e) {
+				$('.zoomin').on('tap click', function(e) {
 					e.preventDefault();
 					map.zoomIn();
 				});
-				$('.zoomout').click(function(e) {
+				$('.zoomout').on('tap click', function(e) {
 					e.preventDefault();
 					map.zoomOut();
 				});

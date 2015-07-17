@@ -93,24 +93,23 @@ var Roots = {
 					}, 0);
 				};
 				// Bind Actions
-				this.locations.on('click', function(e) {
+				this.locations.on('tap click', function(e) {
 					if (!$(this).hasClass('active')) {
-						map.resetActiveLocations();
 						e.preventDefault();
+						map.resetActiveLocations();
 						$(this).addClass('active');
-						if (!$(e.toElement).hasClass('location-lightbox')) {e.stopPropagation();}
+						if (!$(e.target).hasClass('location-lightbox')) {
+							e.stopPropagation();
+						}
 					}
 				});
 				$('#map').click(function(e) {
-					e.preventDefault();
 					map.resetActiveLocations();
 				});
 				$('.zoomin').on('tap click', function(e) {
-					e.preventDefault();
 					map.zoomIn();
 				});
 				$('.zoomout').on('tap click', function(e) {
-					e.preventDefault();
 					map.zoomOut();
 				});
 			}

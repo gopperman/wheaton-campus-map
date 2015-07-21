@@ -6432,7 +6432,7 @@ h4 {
   background: #5b3762;
 }
 .list-view .list-view-locations .list-view-location .list-view-location-details .list-view-location-categories .list-view-location-category.administrative:before {
-  /* TODO */
+  background: #efcb43;
 }
 .list-view .list-view-locations .list-view-location .list-view-location-details .list-view-location-categories .list-view-location-category.athletics:before {
   background: #60a9e7;
@@ -6441,10 +6441,10 @@ h4 {
   background: #e05838;
 }
 .list-view .list-view-locations .list-view-location .list-view-location-details .list-view-location-categories .list-view-location-category.residential:before {
-  background: #efcb43;
+  background: #005596;
 }
 .list-view .list-view-locations .list-view-location .list-view-location-details .list-view-location-categories .list-view-location-category.student-life:before {
-  /* TODO */
+  background: #4ab838;
 }
 .list-view .list-view-locations .list-view-location .list-view-location-details .list-view-location-description p {
   margin-bottom: 0;

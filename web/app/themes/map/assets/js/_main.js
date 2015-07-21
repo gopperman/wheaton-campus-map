@@ -24,7 +24,7 @@ var Roots = {
     init: function() {
       // JavaScript to be fired on all pages
 			var $document = $( document ),
-			$body = $( 'body' );
+				$body = $( 'body' );
 
 			//Asynchronously load external CSS - Font Awesome
 			var fa = document.createElement('link');
@@ -49,7 +49,7 @@ var Roots = {
 						$('html,body').animate({
 							scrollTop: target.offset().top
 						}, 600);
-						$( '.ekko-lightbox' ).animate({
+						$( '.ekko-lightbox' ).animate( {
 							scrollTop: target.position().top
 						}, 600 );
 						return false;
@@ -92,6 +92,19 @@ var Roots = {
 						scrollLeft: (this.map.width() / 2) - (window.innerWidth / 2)
 					}, 0);
 				};
+				this.closeListView = function() {
+					// Close the list view
+					$list_view.addClass( 'closed' );
+
+					// Change the label of the list view button
+					$list_view_buttons.each( function ( ) {
+						var $this = $( this );
+						$this.html( $this.data( 'open-label' ) );
+					} );
+
+					// Adjust the body class
+					$body.removeClass( 'list-view-open' );
+				};
 				// Bind Actions
 				this.locations.on('tap click', function(e) {
 					if (!$(this).hasClass('active')) {
@@ -105,6 +118,7 @@ var Roots = {
 				});
 				$('#map').click(function(e) {
 					map.resetActiveLocations();
+					map.closeListView();
 				});
 				$('.zoomin').on('tap click', function(e) {
 					map.zoomIn();
@@ -120,8 +134,9 @@ var Roots = {
 		$('#viewport').kinetic('attach', {cursor : 'pointer'});
 
 		// Ekko Lightbox
-		$document.delegate( '*[data-toggle="lightbox"]', 'click', function( event ) {
-			var $this = jQuery( this ), $ekko_lightbox, $ekko_lightbox_header, $ekko_lightbox_footer;
+		$document.delegate( '*[data-toggle="lightbox"]', 'touch click', function( event ) {
+			var $this = $( this ), $ekko_lightbox, $ekko_lightbox_header, $ekko_lightbox_footer;
+
 			// Prevent default
 			event.preventDefault();
 
@@ -159,7 +174,7 @@ var Roots = {
 			$list_view_locations_wrap = $list_view.find( '.list-view-locations' ),
 			$list_view_locations = $list_view_locations_wrap.find( '.list-view-location' ),
 			$list_view_locations_categories = $list_view_locations.filter( '.list-view-location-category-name' ),
-			$list_view_no_results = $list_view_locations.filter( '.list-view-no-results'),
+			$list_view_no_results = $list_view_locations.filter( '.list-view-no-results' ),
 			$list_view_filter_sections = $list_view.find( '.list-view-filter' ),
 			$list_view_filters = $list_view_filter_sections.find( 'input' );
 
@@ -195,33 +210,6 @@ var Roots = {
 				// Adjust the body class
 				$body.removeClass( 'list-view-open' );
 			}
-		} );
-
-		// Document click
-		$document.on( 'touch click', function( event ) {
-			// Close the list view
-			$list_view.addClass( 'closed' );
-
-			// Change the label of the list view button
-			$list_view_buttons.each( function ( ) {
-				var $this = $( this );
-				$this.html( $this.data( 'open-label' ) );
-			} );
-
-			// Adjust the body class
-			$body.removeClass( 'list-view-open' );
-		} );
-
-		// List View location links click
-		$list_view_locations_wrap.on( 'touch click', function( event ) {
-			// Prevent propagation (bubbling) to other elements
-			event.stopPropagation();
-		} );
-
-		// List View filter click
-		$list_view_filter_sections.on( 'touch click', function( event ) {
-			// Prevent propagation (bubbling) to other elements
-			event.stopPropagation();
 		} );
 
 		// List View category filter change

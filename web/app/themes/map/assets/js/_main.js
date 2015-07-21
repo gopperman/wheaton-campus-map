@@ -94,16 +94,18 @@ var Roots = {
 				};
 				this.closeListView = function() {
 					// Close the list view
-					$list_view.addClass( 'closed' );
+					if ( ! $list_view.hasClass( 'closed' ) ) {
+						$list_view.addClass( 'closed' );
 
-					// Change the label of the list view button
-					$list_view_buttons.each( function ( ) {
-						var $this = $( this );
-						$this.html( $this.data( 'open-label' ) );
-					} );
+						// Change the label of the list view button
+						$list_view_buttons.each( function ( ) {
+							var $this = $( this );
+							$this.html( $this.data( 'open-label' ) );
+						} );
 
-					// Adjust the body class
-					$body.removeClass( 'list-view-open' );
+						// Adjust the body class
+						$body.removeClass( 'list-view-open' );
+					}
 				};
 				// Bind Actions
 				this.locations.on('tap click', function(e) {
@@ -131,10 +133,16 @@ var Roots = {
 			map.center();
 
 		// Map Panning
-		$('#viewport').kinetic('attach', {cursor : 'pointer'});
+		$( '#viewport' ).kinetic( {
+			filterTarget: function( target, e ) {
+				if ( ! /down|start/.test( e.type ) ) {
+					return ! ( /a/i.test( target.tagName ) );
+				}
+			}
+		} );
 
 		// Ekko Lightbox
-		$document.delegate( '*[data-toggle="lightbox"]', 'touch click', function( event ) {
+		$document.delegate( '*[data-toggle="lightbox"]', 'click', function( event ) {
 			var $this = $( this ), $ekko_lightbox, $ekko_lightbox_header, $ekko_lightbox_footer;
 
 			// Prevent default
@@ -179,7 +187,7 @@ var Roots = {
 			$list_view_filters = $list_view_filter_sections.find( 'input' );
 
 		// List View button click
-		$list_view_buttons.on( 'touch click', function( event ) {
+		$list_view_buttons.on( 'click', function( event ) {
 			var $this = $( this );
 
 			// Prevent default

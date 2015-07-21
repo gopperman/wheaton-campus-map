@@ -143,7 +143,7 @@ var Roots = {
 
 		// Ekko Lightbox
 		$document.delegate( '*[data-toggle="lightbox"]', 'click', function( event ) {
-			var $this = $( this ), $ekko_lightbox, $ekko_lightbox_header, $ekko_lightbox_footer;
+			var $this = $( this ), ekko, $ekko_lightbox, $ekko_lightbox_header, $ekko_lightbox_footer;
 
 			// Prevent default
 			event.preventDefault();
@@ -151,11 +151,28 @@ var Roots = {
 			// Add Lightbox
 			$this.ekkoLightbox( {
 				left_arrow_class: '.glyphicon .glyphicon-menu-left',
-				right_arrow_class: '.glyphicon .glyphicon-menu-right'
+				right_arrow_class: '.glyphicon .glyphicon-menu-right',
+				onShown: function() {
+					// Store a reference to the current ekko lightbox instance (we need this in our event listener below)
+					ekko = this;
+				}
 			} );
 
 			// Location Lightbox Links
 			if ( $this.hasClass( 'location-lightbox' ) ) {
+				// Listen for when the content is loaded within the lightbox
+				$this.on( 'loaded.bs.modal',function() {
+					// If we have a reference to the current ekko lightbox instance
+					if ( ekko && ekko.lightbox_body ) {
+						// Find the hero image and listen for the load event
+						ekko.lightbox_body.find( '#hero img' ).load( function() {
+							// Make sure we call pciturefill() now that we have new <picture> elements in the DOM (prevents a Safari bug where the fallback image is loaded instead of the correct size)
+							picturefill();
+						} );
+					}
+				} );
+
+				// Setup references
 				$ekko_lightbox = $( '.ekko-lightbox' );
 				$ekko_lightbox_header = $ekko_lightbox.find( '.modal-header' );
 				$ekko_lightbox_footer = $ekko_lightbox.find( '.modal-footer' );

@@ -6277,6 +6277,7 @@ h4 {
   display: table;
   font-weight: 500;
   font-size: 14px;
+  line-height: 1.5em;
 }
 .academic .pin,
 .academics .pin {
@@ -6347,6 +6348,7 @@ h4 {
   width: 100%;
   height: 100%;
   overflow: auto;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 .list-view .list-view-search {
   width: 100%;
@@ -6355,6 +6357,7 @@ h4 {
 }
 .list-view .list-view-search .list-view-location-search {
   width: 100%;
+  height: 2.25em;
   padding: 0.25em 2em 0.25em 0.5em;
   border: 1px solid #c0bebf;
   line-height: 1.75em;
@@ -6370,7 +6373,7 @@ h4 {
   right: 1.25em;
 }
 .list-view .list-view-categories {
-  padding: 0.5em 1em;
+  padding: 1em 1em 0.5em;
   font-size: 10px;
   text-transform: uppercase;
 }
@@ -6384,7 +6387,7 @@ h4 {
   list-style: none;
 }
 .list-view .list-view-locations .list-view-location {
-  padding: 1em;
+  padding: 1em 1.5em 1em 1em;
   border-bottom: 1px solid #c0bebf;
 }
 .list-view .list-view-locations .list-view-location .list-view-location-image {

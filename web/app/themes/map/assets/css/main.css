@@ -6631,6 +6631,9 @@ article .container-fluid {
   max-width: 100%;
   max-width: 100vw;
 }
+#hero img {
+  width: 100%;
+}
 #pulldown {
   position: absolute;
   bottom: 0;

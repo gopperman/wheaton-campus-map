@@ -263,6 +263,8 @@ h4 {font-size: 13px;}
 		.opensans;
 		color: @white;
 		font-size: 12px;
+		font-weight: 600;
+		line-height: 1.5em;
 	}
 	h2 {
 		font-size: 16px;
@@ -295,36 +297,37 @@ h4 {font-size: 13px;}
 }
 .academic, .academics {
 	.pin{background:@purple;}
-	h2 {border-bottom: 2px solid @purple;}
+	h2 {border-bottom: 3px solid @purple;}
 }
 .athletic, .athletics {
 	.pin {background:@mudkip;}
-	h2 {border-bottom: 2px solid @mudkip;}
+	h2 {border-bottom: 3px solid @mudkip;}
 }
 .administrative {
 	.pin {background:@yellow;}
-	h2 {border-bottom: 2px solid @yellow;}
+	h2 {border-bottom: 3px solid @yellow;}
 }
 .dining {
 	.pin {background:@orange;}
-	h2 {border-bottom: 2px solid @orange;}
+	h2 {border-bottom: 3px solid @orange;}
 
 }
 .residential {
 	.pin {background:@blue;}
-	h2 {border-bottom: 2px solid @blue;}
+	h2 {border-bottom: 3px solid @blue;}
 }
 .student-life {
 	.pin {background:@green-bright;}
-	h2 {border-bottom: 2px solid @green-bright;}
+	h2 {border-bottom: 3px solid @green-bright;}
 }
 
 .pin {
-	width: 16px;
-  height: 16px;
+	width: 18px;
+  height: 18px;
   background: #000;
-  border-radius: 16px;
-  border: 2px solid #fff;
+  border-radius: 18px;
+  border: 3px solid #fff;
+	box-shadow: 1px 1px 0px rgba(0,0,0,.4);
 	display: block;
 }
 
@@ -398,6 +401,8 @@ h4 {font-size: 13px;}
 		.list-view-location {
 			padding: 1em 1.5em 1em 1em;
 			border-bottom: 1px solid @modal_arrow_bg;
+			transition: all, .2s;
+			&:hover {background: #f8f8f8;}
 
 			.list-view-location-image {
 				width: 30%;
@@ -415,12 +420,13 @@ h4 {font-size: 13px;}
 
 				.list-view-location-title {
 					margin-bottom: 0.5em;
+					font-weight: normal;
 				}
 
 				.list-view-location-categories {
 					margin-bottom: 0.5em;
 					color: @black;
-					font-size: 12px;
+					font-size: 11px;
 					font-weight: bold;
 
 					.list-view-location-category {
@@ -429,6 +435,7 @@ h4 {font-size: 13px;}
 						padding-right: 1em;
 						line-height: 22px;
 						display: inline-block;
+						text-transform: uppercase;
 					}
 
 					.list-view-location-category:before {
@@ -474,6 +481,7 @@ h4 {font-size: 13px;}
 					p {
 						margin-bottom: 0;
 						font-size: 12px;
+						font-family: 'Helvetica Neue', Helvetica, sans-serif;
 					}
 				}
 			}
@@ -488,7 +496,7 @@ h4 {font-size: 13px;}
 	.list-view-button {
 		width: 120px;
 		background: @wheaton;
-		border: 2px solid @white;
+		border: 3px solid @white;
 		border-top: none;
 		font-weight: normal;
 		text-align: center;
@@ -970,7 +978,9 @@ aside .button {
    Primary Content
    ========================================================================== */
 
-.main { }
+#main { 
+	padding: 0 70px;
+}
 
 /* Gallery Shortcode */
 .gallery-row { padding: 15px 0; }
@@ -1078,6 +1088,10 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
 }
 
 @media (min-width: @screen-md-min) {
+ article .container-fluid {
+		padding-left: 50px;
+		padding-right: 50px;
+	}
 	#map {
 		background-size: 100% auto !important;
 		&.z1 {
@@ -1107,6 +1121,11 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
 }
 
 @media (min-width: @screen-lg-min) { 
+	article .container-fluid {
+		padding-left: 100px;
+		padding-right: 100px;
+		max-width: 1200px;
+	}
 	#map {
 		background-size: 100% auto !important;
 		&.z1 {

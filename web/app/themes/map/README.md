@@ -57,7 +57,7 @@ http://map.wheaton/location/10-library-square/?json=✓
 	* Directory (Optional) - A repeater field for a list of relevant department or organizational links (Admissions, Swim Team). Each directory entry has a label ("Name") and a URL ("Link")
 	* Contact Information (Optional) - A repeater field for one or more sets of phone numbers, e-mail addresses, etc. Each repeater contains a "Type" (Phone or Email), a label ("Name"), and a value for the actual phone number or e-mail address.
 	* Photo Gallery (Optional) - A gallery of photos of the building and related activities. Photos are pulled in through the normal Wordpress Media Library and upload system. Landscape highly recommended, at least 1600x1200 (4:3) each. 
-	* Coordinates - The actual map coordinates for the location
+	* Coordinates - The actual map coordinates for the location. Each coordinate consist of an X coordinate, or left/right value, and Y coordinate, or top/bottom value. Eaach coordinate is represented by a number between 0 and 100, and can include decimals. The value represents the percentage from the left or top where the pin will be placed. For example, if x_coord=55 and y_coord=33.33, the pin will be placed a little more than halfway across the map, and about 1/3 from the top.
 
 ### [Roots Docs](http://roots.io/docs/)
 

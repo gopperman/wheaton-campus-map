@@ -14,6 +14,7 @@ The Wheaton Map is a single-page application delivered via Wordpress for interac
 		* [Plugins](#plugins) 
 		* [Updating WP and Plugins](#updating-wp-and-plugin-versions) 
 		* [Themes](#themes)
+	* [Map Theme](#map-theme)
 
 ## Getting Started
 
@@ -215,3 +216,7 @@ This enables the use of mu-plugins through Composer if their package type is `wo
 ```
 
 [Soil](https://github.com/roots/soil) is a package with its type set to `wordpress-plugin`. Since it implements `composer/installers` we can override its type.
+
+## Map Theme
+
+Additional documentation for the map theme can be found at [https://github.com/WheatonCollege/map/tree/master/web/app/themes/map](https://github.com/WheatonCollege/map/tree/master/web/app/themes/map)

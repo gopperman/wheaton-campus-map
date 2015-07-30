@@ -87,7 +87,7 @@
 	wp_reset_postdata();
 ?>
 <div id="viewport">
-	<div id="map" class="z1">
+	<div id="map" class="z2">
 		<div id="map_controls">
 			<a class="zoomin">+</a>
 			<a class="zoomout">-</a>

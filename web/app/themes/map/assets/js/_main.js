@@ -65,25 +65,34 @@ var Roots = {
 					this.locations.removeClass('active');
 				};
 				this.zoomOut = function() {
-					if (!this.map.hasClass('z1')) {
-						if (this.map.hasClass('z2')) {
+					switch (this.map[0].className) {
+						case 'z2':
 							this.map.removeClass('z2');
 							this.map.addClass('z1');
-						} else {
+							break;
+						case 'z3':
 							this.map.removeClass('z3');
 							this.map.addClass('z2');
-						}
+							break;
+						case 'z4':
+							this.map.removeClass('z4');
+							this.map.addClass('z3');
+							break;
 					}
 				};
 				this.zoomIn = function() {
-					if (!this.map.hasClass('z3')) {
-						if (this.map.hasClass('z2')) {
-							this.map.removeClass('z2');
-							this.map.addClass('z3');
-						} else {
+					switch (this.map[0].className) {
+						case 'z1':
 							this.map.removeClass('z1');
 							this.map.addClass('z2');
-						}
+							break;
+						case 'z2':
+							this.map.removeClass('z2');
+							this.map.addClass('z3');
+							break;
+						case 'z3':
+							this.map.removeClass('z3');
+							this.map.addClass('z4');
 					}
 				};
 				this.center = function() {

@@ -174,6 +174,11 @@ h4 {font-size: 13px;}
 		width: 2200px;
 		height: 2005px;
 		background: url(../img/map-2200x2005.png) no-repeat;
+	}
+	&.z4 {
+		width: 2800px;
+		height: 2552px;
+		background: url(../img/map-2800x2552.png) no-repeat;
 		.zoomin {
 			background: darken(@white, 10%);
 		}
@@ -1095,23 +1100,26 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
 	#map {
 		background-size: 100% auto !important;
 		&.z1 {
+			width: 1185px;
+			height: 1080px;
+			background: url(../img/map-1185x1080.png) no-repeat;
+		}
+		&.z2 {
 			width: 1600px;
 			height: 1459px;
 			background: url(../img/map-1600x1459.png) no-repeat;
 		}
-		&.z2 {
+		&.z3 {
 			width: 2200px;
 			height: 2005px;
 			background: url(../img/map-2200x2005.png) no-repeat;
 		}
-		&.z3 {
+		&.z4 {
 			width: 2800px;
 			height: 2552px;
 			background: url(../img/map-2800x2552.png) no-repeat;
 		}
 	}
-
-
 	/* List View */
 	.list-view {
 		.list-view-categories {
@@ -1129,6 +1137,32 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
 	#map {
 		background-size: 100% auto !important;
 		&.z1 {
+			width: 1600px;
+			height: 1459px;
+			background: url(../img/map-1600x1459.png) no-repeat;
+		}
+		&.z2 {
+			width: 2200px;
+			height: 2005px;
+			background: url(../img/map-2200x2005.png) no-repeat;
+		}
+		&.z3 {
+			width: 2800px;
+			height: 2552px;
+			background: url(../img/map-2800x2552.png) no-repeat;
+		}
+		&.z4 {
+			width: 3400px;
+			height: 3099px;
+			background: url(../img/map-3400x3099.png) no-repeat;
+		}
+	}
+}
+
+@media (min-width: 1600px) {
+	#map {
+		background-size: 100% auto !important;
+		&.z1 {
 			width: 2200px;
 			height: 2005px;
 			background: url(../img/map-2200x2005.png) no-repeat;
@@ -1143,10 +1177,14 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
 			height: 3099px;
 			background: url(../img/map-3400x3099.png) no-repeat;
 		}
+		&.z4 {
+			width: 4000px;
+			height: 3646px;
+			background: url(../img/map-4000x3646.png) no-repeat;
+		}
 	}
+
 }
-
-
 @media (min-width: @screen-sm-min) and (max-width: @screen-lg-min) {
 	.single-location {
 		.entry-content.col-sm-9 {

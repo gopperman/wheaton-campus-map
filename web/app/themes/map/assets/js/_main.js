@@ -28,7 +28,7 @@ var Roots = {
 
 			//Asynchronously load external CSS - Font Awesome
 			var fa = document.createElement('link');
-			fa.href = 'http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css';
+			fa.href = '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css';
 			fa.rel = 'stylesheet';
 			fa.type = 'text/css';
 			document.getElementsByTagName('head')[0].appendChild(fa);
